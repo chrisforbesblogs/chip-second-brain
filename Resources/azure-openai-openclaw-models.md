@@ -25,16 +25,17 @@ Fallback model:
 - Provider: `microsoft-foundry`
 - Model/deployment: `gpt-5.4-mini`
 - Config id: `microsoft-foundry/gpt-5.4-mini`
-- Base URL: `https://cefdevai.openai.azure.com/openai/v1`
+- Base URL: `https://chris-mpr2tzn4-eastus2.cognitiveservices.azure.com/openai/v1`
+- Responses URI: `https://chris-mpr2tzn4-eastus2.cognitiveservices.azure.com/openai/responses?api-version=2025-04-01-preview`
 - API mode: `openai-responses`
 - Purpose: fallback model for OpenClaw agents when the primary route is unavailable.
 
 Related environment variables:
-- `AZURE_OPENAI_API_KEY`
-- `AZURE_OPENAI_ENDPOINT=https://cefdevai.openai.azure.com/`
-- `AZURE_OPENAI_BASE_URL=https://cefdevai.openai.azure.com/openai/v1`
-- `AZURE_OPENAI_API_VERSION=preview`
-- `AZURE_OPENAI_DEPLOYMENT_NAME_MAP=gpt-5.4-mini=gpt-5.4-mini`
+- `AZURE_OPENAI_EASTUS_API_KEY`
+- `AZURE_OPENAI_EASTUS_FALLBACK_BASE_URL=https://chris-mpr2tzn4-eastus2.cognitiveservices.azure.com/openai/v1`
+- `AZURE_OPENAI_EASTUS_FALLBACK_RESPONSES_URI=https://chris-mpr2tzn4-eastus2.cognitiveservices.azure.com/openai/responses?api-version=2025-04-01-preview`
+- `AZURE_OPENAI_EASTUS_FALLBACK_MODEL=gpt-5.4-mini`
+- `AZURE_OPENAI_EASTUS_FALLBACK_API_VERSION=2025-04-01-preview`
 
 ## Memory Search Embeddings
 
@@ -85,4 +86,3 @@ Related environment variables:
 ## Naming Note
 
 The local environment variable prefix is `AZURE_OPENAI_EASTUS_*`, while the Azure resource hostname includes `eastus2`. Keep the existing variable names unless intentionally migrating the configuration.
-
