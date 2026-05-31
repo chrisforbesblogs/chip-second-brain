@@ -1,0 +1,22 @@
+# Local OS/editor noise
+.DS_Store
+Thumbs.db
+*~
+
+# Obsidian local workspace state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+
+# Secrets and private runtime files
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*secret*
+*secrets*
+
+# Obsidian trash
+.trash/
