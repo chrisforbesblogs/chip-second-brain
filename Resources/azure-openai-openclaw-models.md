@@ -44,11 +44,11 @@ Embedding provider:
 - Model/deployment: `text-embedding-3-small`
 - Base URL: `https://chris-mpr2tzn4-eastus2.cognitiveservices.azure.com/openai/v1/`
 - Vector dimensions observed: `1536`
-- Purpose: OpenClaw native memory search embeddings for the second brain and project hub.
+- Purpose: OpenClaw native memory search embeddings for the second brain and second-brain project structure.
 
 Indexed paths:
 - `~/.openclaw/workspace/second-brain`
-- `~/.openclaw/workspace/chip-projecthub`
+- `~/.openclaw/workspace/second-brain/Projects`
 
 Related environment variables:
 - `AZURE_OPENAI_EASTUS_EMBEDDINGS_API_KEY`

@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parcel Post Mockup</title>
+    <style>
+      :root {
+        --cream: #f7ead2;
+        --paper: #fff7e6;
+        --grass: #9fcf87;
+        --grass-dark: #7caf6d;
+        --path: #d8b885;
+        --path-dark: #c49a62;
+        --red: #c94032;
+        --red-dark: #962f27;
+        --ink: #3c2f24;
+        --muted: #7c6550;
+        --blue: #8cc8d8;
+        --yellow: #f0c45a;
+        --pink: #e9a0a5;
+        --green-house: #7fb697;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #e7cfa8;
+        color: var(--ink);
+        font-family: ui-rounded, "Trebuchet MS", system-ui, sans-serif;
+      }
+
+      .page {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 24px;
+      }
+
+      .phone {
+        background: var(--cream);
+        border: 8px solid #2f261f;
+        border-radius: 28px;
+        box-shadow: 0 20px 50px rgba(60, 47, 36, 0.28);
+        height: 812px;
+        overflow: hidden;
+        position: relative;
+        width: 390px;
+      }
+
+      .top {
+        background: linear-gradient(#fff2cf, #f7dfb8);
+        border-bottom: 4px solid #d5b37b;
+        padding: 18px 18px 14px;
+      }
+
+      .title-row {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      h1 {
+        font-size: 30px;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+        margin-top: 5px;
+      }
+
+      .stamp {
+        align-items: center;
+        background: var(--paper);
+        border: 3px solid var(--red);
+        border-radius: 10px;
+        color: var(--red-dark);
+        display: flex;
+        flex-direction: column;
+        font-weight: 900;
+        height: 58px;
+        justify-content: center;
+        transform: rotate(4deg);
+        width: 58px;
+      }
+
+      .stamp span:first-child {
+        font-size: 20px;
+      }
+
+      .stamp span:last-child {
+        font-size: 10px;
+      }
+
+      .hud {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 16px;
+      }
+
+      .hud-card {
+        background: var(--paper);
+        border: 3px solid #d3ad75;
+        border-radius: 12px;
+        padding: 9px;
+      }
+
+      .hud-card strong {
+        display: block;
+        font-size: 20px;
+      }
+
+      .hud-card span {
+        color: var(--muted);
+        display: block;
+        font-size: 10px;
+        font-weight: 900;
+        margin-top: 2px;
+        text-transform: uppercase;
+      }
+
+      .board-wrap {
+        padding: 18px;
+      }
+
+      .parcel-banner {
+        align-items: center;
+        background: #fff7e6;
+        border: 3px solid #d0ad76;
+        border-radius: 14px;
+        display: flex;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding: 10px 12px;
+      }
+
+      .parcel-icon {
+        align-items: center;
+        background: #c58e4b;
+        border: 3px solid #8d5f34;
+        border-radius: 6px;
+        color: #fff4d6;
+        display: flex;
+        font-size: 18px;
+        font-weight: 900;
+        height: 34px;
+        justify-content: center;
+        width: 34px;
+      }
+
+      .parcel-banner strong {
+        display: block;
+        font-size: 15px;
+      }
+
+      .parcel-banner span {
+        color: var(--muted);
+        display: block;
+        font-size: 12px;
+        font-weight: 800;
+        margin-top: 2px;
+      }
+
+      .board {
+        background: #6fae65;
+        border: 5px solid #5e7f4d;
+        border-radius: 16px;
+        display: grid;
+        gap: 3px;
+        grid-template-columns: repeat(10, 1fr);
+        padding: 7px;
+      }
+
+      .tile {
+        aspect-ratio: 1;
+        border-radius: 5px;
+        position: relative;
+      }
+
+      .grass {
+        background: var(--grass);
+        box-shadow: inset 0 -4px var(--grass-dark);
+      }
+
+      .path {
+        background: var(--path);
+        box-shadow: inset 0 -4px var(--path-dark);
+      }
+
+      .water {
+        background: var(--blue);
+        box-shadow: inset 0 -4px #6aaec0;
+      }
+
+      .house {
+        background: var(--pink);
+        box-shadow: inset 0 -4px #c8757c;
+      }
+
+      .house::before {
+        background: #8a5645;
+        clip-path: polygon(50% 0, 100% 46%, 0 46%);
+        content: "";
+        height: 55%;
+        left: 7%;
+        position: absolute;
+        top: -14%;
+        width: 86%;
+      }
+
+      .house.green {
+        background: var(--green-house);
+        box-shadow: inset 0 -4px #63937a;
+      }
+
+      .post-office {
+        background: #f0d678;
+        box-shadow: inset 0 -4px #c9a845;
+      }
+
+      .post-office::after {
+        color: var(--red-dark);
+        content: "P";
+        font-size: 18px;
+        font-weight: 1000;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .puddle {
+        background: var(--path);
+        box-shadow: inset 0 -4px var(--path-dark);
+      }
+
+      .puddle::after {
+        background: #7eb7ce;
+        border-radius: 50%;
+        content: "";
+        height: 46%;
+        left: 24%;
+        position: absolute;
+        top: 32%;
+        width: 58%;
+      }
+
+      .destination {
+        outline: 4px solid var(--yellow);
+        outline-offset: -4px;
+      }
+
+      .postman {
+        background: var(--red);
+        border: 3px solid var(--red-dark);
+        border-radius: 8px 8px 5px 5px;
+        bottom: 10%;
+        height: 75%;
+        left: 18%;
+        position: absolute;
+        width: 64%;
+        z-index: 5;
+      }
+
+      .postman::before {
+        background: #ffd9b0;
+        border: 2px solid var(--red-dark);
+        border-radius: 50%;
+        content: "";
+        height: 42%;
+        left: 24%;
+        position: absolute;
+        top: -24%;
+        width: 52%;
+      }
+
+      .postman::after {
+        background: #8d5f34;
+        border: 2px solid #684323;
+        border-radius: 4px;
+        content: "";
+        height: 31%;
+        position: absolute;
+        right: -18%;
+        top: 35%;
+        width: 34%;
+      }
+
+      .footer {
+        align-items: center;
+        background: #fff7e6;
+        border-top: 4px solid #d5b37b;
+        bottom: 0;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        left: 0;
+        padding: 14px 18px 18px;
+        position: absolute;
+        right: 0;
+      }
+
+      .villager {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+      }
+
+      .face {
+        align-items: center;
+        background: #f4be85;
+        border: 3px solid #9b6a46;
+        border-radius: 50%;
+        display: flex;
+        font-size: 20px;
+        height: 46px;
+        justify-content: center;
+        width: 46px;
+      }
+
+      .bubble {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1.2;
+        max-width: 172px;
+      }
+
+      .button {
+        background: var(--red);
+        border: 0;
+        border-bottom: 5px solid var(--red-dark);
+        border-radius: 12px;
+        color: #fff7e6;
+        font-size: 14px;
+        font-weight: 1000;
+        padding: 13px 14px 10px;
+      }
+
+      .screen-label {
+        color: rgba(60, 47, 36, 0.65);
+        font-size: 12px;
+        font-weight: 900;
+        margin-top: 14px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 460px) {
+        .page {
+          padding: 0;
+        }
+
+        .phone {
+          border: 0;
+          border-radius: 0;
+          min-height: 100vh;
+          width: 100vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="phone" aria-label="Parcel Post gameplay mockup">
+        <header class="top">
+          <div class="title-row">
+            <div>
+              <h1>Parcel Post</h1>
+              <div class="subtitle">Morning route in Maple Lane</div>
+            </div>
+            <div class="stamp">
+              <span>12</span>
+              <span>stamps</span>
+            </div>
+          </div>
+
+          <div class="hud">
+            <div class="hud-card">
+              <strong>840</strong>
+              <span>score</span>
+            </div>
+            <div class="hud-card">
+              <strong>0:42</strong>
+              <span>sunset</span>
+            </div>
+            <div class="hud-card">
+              <strong>x4</strong>
+              <span>streak</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="board-wrap">
+          <div class="parcel-banner">
+            <div class="parcel-icon">!</div>
+            <div>
+              <strong>Fragile parcel</strong>
+              <span>Deliver to Rose Cottage without bumping.</span>
+            </div>
+          </div>
+
+          <div class="board" role="img" aria-label="Cozy village grid with postman, houses, paths, water, grass and puddles">
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="house tile destination"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="grass tile"></div>
+            <div class="post-office tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="water tile"></div>
+            <div class="water tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="house green tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="puddle tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="house tile"></div>
+
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"><div class="postman"></div></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="grass tile"></div>
+            <div class="water tile"></div>
+            <div class="water tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="house green tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="puddle tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="grass tile"></div>
+
+            <div class="grass tile"></div>
+            <div class="grass tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="path tile"></div>
+            <div class="house tile"></div>
+          </div>
+
+          <div class="screen-label">Gameplay mockup: swipe to deliver parcels before sunset</div>
+        </div>
+
+        <footer class="footer">
+          <div class="villager">
+            <div class="face">:)</div>
+            <div class="bubble">Mrs. Poppy is waiting at Rose Cottage.</div>
+          </div>
+          <button class="button">Deliver</button>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
