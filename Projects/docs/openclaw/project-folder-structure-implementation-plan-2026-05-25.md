@@ -14,16 +14,21 @@ Organise all current and future work so that:
 
 ## Recommended Top-Level Layout
 
-Use `/home/cef-admin/projects` as the canonical project area.
+Use the OpenClaw second-brain as the canonical project-collateral area, and `/home/cef-admin/projects-source-code` as the canonical buildable-source area.
 
 ```text
+/home/cef-admin/.openclaw/workspace/second-brain/Projects/
+  projects/                          # Project notes: planning, research, collateral, links
+  docs/
+  templates/
+
+/home/cef-admin/projects-source-code/
+  chip-postman/                      # Source repos live here, each with its own .git
+  football-betting-app/
+  compliance-tracker/
+  sports-prediction-model/
+
 /home/cef-admin/projects/
-  second-brain/Projects/                       # Project notes: planning, research, collateral, links
-  source-code/                       # Source repos live here, each with its own .git
-    chip-postman/
-    football-betting-app/
-    compliance-tracker/
-    sports-prediction-model/
   archive/                           # Old prototypes, superseded experiments, snapshots
   sandbox/                           # Throwaway experiments and temporary spikes
 ```
@@ -117,10 +122,10 @@ This repo should contain Markdown reports, plans, screenshots, mockups, diagrams
 Each source project should be a separate GitHub repo and local clone:
 
 ```text
-/home/cef-admin/projects/source-code/chip-postman/              # Git repo
-/home/cef-admin/projects/source-code/football-betting-app/      # Git repo
-/home/cef-admin/projects/source-code/compliance-tracker/        # Git repo
-/home/cef-admin/projects/source-code/sports-prediction-model/   # Git repo
+/home/cef-admin/projects-source-code/chip-postman/              # Git repo
+/home/cef-admin/projects-source-code/football-betting-app/      # Git repo
+/home/cef-admin/projects-source-code/compliance-tracker/        # Git repo
+/home/cef-admin/projects-source-code/sports-prediction-model/   # Git repo
 ```
 
 Standard source repo structure:
@@ -186,7 +191,7 @@ Proposed migration from the current mixed workspace:
 
 ```text
 /home/cef-admin/.openclaw/workspace/chip-postman
-  -> /home/cef-admin/projects/source-code/chip-postman
+  -> /home/cef-admin/projects-source-code/chip-postman
   -> source repo: chrisforbesblogs/chip-postman
 
 /home/cef-admin/.openclaw/workspace/parcel-post
@@ -209,11 +214,11 @@ Proposed migration from the current mixed workspace:
   -> second-brain/Projects/projects/football-betting-app/implementation-plans/
 
 /home/cef-admin/.openclaw/workspace/sports-prediction-model
-  -> /home/cef-admin/projects/source-code/sports-prediction-model if it contains useful source
+  -> /home/cef-admin/projects-source-code/sports-prediction-model if it contains useful source
   -> otherwise archive/sandbox
 
 /home/cef-admin/.openclaw/workspace/compliance-tracker-mockup
-  -> /home/cef-admin/projects/source-code/compliance-tracker if it is active source
+  -> /home/cef-admin/projects-source-code/compliance-tracker if it is active source
   -> second-brain/Projects/projects/compliance-tracker/mockups/ for collateral snapshots
 
 /home/cef-admin/.openclaw/workspace/expo-hello-world
@@ -253,7 +258,7 @@ chrisforbesblogs/sports-prediction-model
 ### Phase 2: Create Local Directories
 
 ```bash
-mkdir -p /home/cef-admin/projects/source-code
+mkdir -p /home/cef-admin/projects-source-code
 mkdir -p /home/cef-admin/projects/archive
 mkdir -p /home/cef-admin/projects/sandbox
 ```
@@ -264,10 +269,10 @@ Clone the hub repo:
 git clone git@github.com:chrisforbesblogs/second-brain/Projects.git /home/cef-admin/.openclaw/workspace/second-brain/Projects
 ```
 
-Clone each source repo under `source-code/`:
+Clone each source repo under `/home/cef-admin/projects-source-code/`:
 
 ```bash
-git clone git@github.com:chrisforbesblogs/chip-postman.git /home/cef-admin/projects/source-code/chip-postman
+git clone git@github.com:chrisforbesblogs/chip-postman.git /home/cef-admin/projects-source-code/chip-postman
 ```
 
 ### Phase 3: Add Hub Skeleton
@@ -292,8 +297,7 @@ Do not move OpenClaw memory/config files into public GitHub unless explicitly in
 
 ### Phase 5: Move Source Code Repos
 
-Move or reclone source projects into `/home/cef-admin/projects/source`.
-Move or reclone source projects into `/home/cef-admin/projects/source-code`.
+Move or reclone source projects into `/home/cef-admin/projects-source-code`.
 
 For `chip-postman`, be careful: the current repo has uncommitted changes on branch `feature/audio-pass`:
 
@@ -315,7 +319,7 @@ Each hub project should have a `links.md` file:
 # Links
 
 - Source repo: https://github.com/chrisforbesblogs/chip-postman
-- Local source path: `/home/cef-admin/projects/source-code/chip-postman`
+- Local source path: `/home/cef-admin/projects-source-code/chip-postman`
 - Main planning folder: `/home/cef-admin/.openclaw/workspace/second-brain/Projects/projects/chip-postman`
 ```
 
@@ -334,7 +338,7 @@ Do this only after checking whether they contain unique work.
 ## Rules Going Forward
 
 - New app idea: create a folder under `second-brain/Projects/projects/<slug>/`.
-- New source build: create a separate GitHub repo and clone under `/home/cef-admin/projects/source-code/<slug>/`.
+- New source build: create a separate GitHub repo and clone under `/home/cef-admin/projects-source-code/<slug>/`.
 - Research reports: save under `second-brain/Projects/projects/<slug>/research/`.
 - Implementation plans: save under `second-brain/Projects/projects/<slug>/implementation-plans/`.
 - Mockups: save under `second-brain/Projects/projects/<slug>/mockups/`.

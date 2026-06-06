@@ -51,7 +51,7 @@ priority: high
 owner_agent: ChipCode
 strategy_agent: ChipThink
 project_path: /home/cef-admin/.openclaw/workspace/second-brain/Projects/projects/chip-postman
-source_path: /home/cef-admin/projects/source-code/chip-postman
+source_path: /home/cef-admin/projects-source-code/chip-postman
 github_repo: https://github.com/chrisforbesblogs/chip-postman
 current_focus: Improve core arcade loop and delivery features
 next_milestone: Streak and parcel-type prototype

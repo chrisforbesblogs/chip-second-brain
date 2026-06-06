@@ -5,7 +5,7 @@ Parcel/postman game project.
 ## Source
 
 - GitHub: https://github.com/chrisforbesblogs/chip-postman
-- Local path: `/home/cef-admin/projects/source-code/chip-postman`
+- Local path: `/home/cef-admin/projects-source-code/chip-postman`
 
 ## Hub Sections
 
