@@ -39,6 +39,19 @@ BLUE = "#2d6cdf"
 ORANGE = "#dd7b2a"
 RED = "#d84d45"
 
+WHOOP = {
+    "bg": "#050608",
+    "card": "#111417",
+    "card2": "#080a0c",
+    "ink": "#f6f8f2",
+    "muted": "#8b958f",
+    "line": "#252a2f",
+    "primary": "#c7ff3d",
+    "secondary": "#45d483",
+    "accent": "#ffb340",
+    "danger": "#ff5f5a",
+}
+
 
 def rr(draw, box, radius=22, fill=CARD, outline=None, width=1):
     draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
@@ -163,6 +176,136 @@ def draw_training(path):
         text(d, (44, y), kind, font_key="sm")
         text(d, (152, y), detail, fill=MUTED, font_key="xs")
     nav(d, "Train")
+    im.save(path)
+
+
+def whoop_text(draw, xy, value, font_key="base", fill=None, anchor=None):
+    draw.text(xy, value, fill=fill or WHOOP["ink"], font=F[font_key], anchor=anchor)
+
+
+def whoop_rr(draw, box, radius=14, fill=None, outline=None, width=1):
+    draw.rounded_rectangle(
+        box,
+        radius=radius,
+        fill=fill or WHOOP["card"],
+        outline=outline or WHOOP["line"],
+        width=width,
+    )
+
+
+def ring(draw, cx, cy, radius, pct, color, width=12):
+    box = (cx - radius, cy - radius, cx + radius, cy + radius)
+    draw.arc(box, start=0, end=360, fill=WHOOP["line"], width=width)
+    draw.arc(box, start=-90, end=-90 + int(360 * pct), fill=color, width=width)
+
+
+def whoop_top_bar(draw, title):
+    whoop_text(draw, (28, 28), title, "bold")
+    whoop_rr(draw, (336, 20, 374, 58), radius=6, fill=WHOOP["card"], outline=WHOOP["line"])
+    whoop_text(draw, (355, 38), "P", "bold", WHOOP["primary"], "mm")
+
+
+def whoop_nav(draw, active):
+    y = 790
+    whoop_rr(draw, (16, 772, 374, 832), radius=14, fill=WHOOP["card2"], outline=WHOOP["line"])
+    items = [("Today", 52), ("Cal", 122), ("Train", 195), ("Food", 268), ("Habits", 335)]
+    for label, x in items:
+        fill = WHOOP["primary"] if label == active else WHOOP["muted"]
+        whoop_text(draw, (x, y + 7), label.upper(), "xs", fill, "mm")
+
+
+def draw_today_whoop(path):
+    im = Image.new("RGB", (390, 844), WHOOP["bg"])
+    d = ImageDraw.Draw(im)
+    whoop_top_bar(d, "Life App")
+    whoop_text(d, (28, 78), "Today", "xl")
+    whoop_text(d, (28, 112), "Garmin synced 12 min ago", "xs", WHOOP["muted"])
+
+    whoop_rr(d, (20, 144, 370, 362), radius=14)
+    whoop_text(d, (44, 178), "RECOVERY", "small_bold", WHOOP["muted"])
+    ring(d, 116, 262, 62, 0.82, WHOOP["primary"], 14)
+    whoop_text(d, (116, 254), "82", "xl", WHOOP["primary"], "mm")
+    whoop_text(d, (116, 288), "%", "sm", WHOOP["muted"], "mm")
+    whoop_text(d, (220, 242), "Green", "lg")
+    whoop_text(d, (220, 270), "Body is ready", "sm", WHOOP["muted"])
+    whoop_rr(d, (220, 296, 332, 328), radius=7, fill=WHOOP["primary"], outline=WHOOP["primary"])
+    whoop_text(d, (276, 314), "TRAIN OK", "xs", WHOOP["bg"], "mm")
+
+    metrics = [
+        ("LOAD", "12.4", WHOOP["accent"], 0.62),
+        ("SLEEP", "91%", WHOOP["primary"], 0.91),
+        ("HRV", "64ms", WHOOP["secondary"], 0.74),
+    ]
+    x = 20
+    for label, value, color, pct in metrics:
+        whoop_rr(d, (x, 382, x + 110, 514), radius=14)
+        whoop_text(d, (x + 16, 416), label, "xs", WHOOP["muted"])
+        ring(d, x + 55, 466, 28, pct, color, 7)
+        whoop_text(d, (x + 55, 470), value, "small_bold", color, "mm")
+        x += 120
+
+    whoop_rr(d, (20, 536, 370, 632), radius=14)
+    whoop_text(d, (44, 570), "RECOMMENDED", "xs", WHOOP["muted"])
+    whoop_text(d, (44, 604), "Zone 2 run only", "lg", WHOOP["primary"])
+    whoop_text(d, (302, 570), "35 min", "xs", WHOOP["muted"])
+
+    whoop_rr(d, (20, 650, 370, 746), radius=14)
+    whoop_text(d, (44, 682), "TODAY'S ACTIONS", "xs", WHOOP["muted"])
+    actions = [("Protein target", WHOOP["secondary"]), ("Sleep before 11", WHOOP["accent"])]
+    y = 708
+    for title, color in actions:
+        d.ellipse((44, y - 7, 56, y + 5), fill=color)
+        whoop_text(d, (68, y), title, "sm")
+        y += 22
+
+    whoop_nav(d, "Today")
+    im.save(path)
+
+
+def draw_training_whoop(path):
+    im = Image.new("RGB", (390, 844), WHOOP["bg"])
+    d = ImageDraw.Draw(im)
+    whoop_top_bar(d, "Training")
+    whoop_text(d, (28, 78), "Training", "xl")
+
+    whoop_rr(d, (24, 124, 366, 166), radius=12, fill=WHOOP["card2"])
+    whoop_rr(d, (30, 130, 190, 160), radius=8, fill=WHOOP["primary"], outline=WHOOP["primary"])
+    whoop_text(d, (110, 145), "TODAY", "xs", WHOOP["bg"], "mm")
+    whoop_text(d, (275, 145), "WORKOUTS", "xs", WHOOP["muted"], "mm")
+
+    whoop_rr(d, (20, 190, 370, 380), radius=14)
+    whoop_text(d, (44, 224), "RECOMMENDED WORKOUT", "xs", WHOOP["muted"])
+    whoop_text(d, (44, 276), "Zone 2 Run", "lg", WHOOP["primary"])
+    whoop_text(d, (44, 306), "35 min - easy pace - low fatigue", "sm", WHOOP["muted"])
+    ring(d, 300, 282, 42, 0.62, WHOOP["accent"], 10)
+    whoop_text(d, (300, 286), "12.4", "small_bold", WHOOP["accent"], "mm")
+    whoop_rr(d, (44, 330, 154, 356), radius=7, fill=WHOOP["primary"], outline=WHOOP["primary"])
+    whoop_text(d, (99, 344), "START PLAN", "xs", WHOOP["bg"], "mm")
+
+    whoop_rr(d, (20, 402, 370, 578), radius=14)
+    whoop_text(d, (44, 434), "BODY SIGNALS", "xs", WHOOP["muted"])
+    metrics = [
+        ("LOAD", "Moderate", WHOOP["accent"]),
+        ("HRV", "Stable", WHOOP["secondary"]),
+        ("RECOVERY", "Good", WHOOP["primary"]),
+        ("LAST RUN", "5.2 km", WHOOP["muted"]),
+    ]
+    xys = [(44, 468), (204, 468), (44, 522), (204, 522)]
+    for (label, value, color), (x, y) in zip(metrics, xys):
+        whoop_rr(d, (x, y, x + 126, y + 36), radius=10, fill=WHOOP["card2"])
+        whoop_text(d, (x + 12, y + 14), label, "xs", WHOOP["muted"])
+        whoop_text(d, (x + 116, y + 24), value, "xs", color, "ra")
+
+    whoop_rr(d, (20, 598, 370, 746), radius=14)
+    whoop_text(d, (44, 630), "WORKOUT HISTORY", "xs", WHOOP["muted"])
+    history = [("RUN", "Yesterday - 5.2 km", WHOOP["primary"]), ("STRENGTH", "2 days ago - upper", WHOOP["secondary"]), ("RIDE", "4 days ago - 42 min", WHOOP["accent"])]
+    for i, (kind, detail, color) in enumerate(history):
+        y = 660 + i * 28
+        d.ellipse((44, y - 8, 56, y + 4), fill=color)
+        whoop_text(d, (70, y), kind, "sm")
+        whoop_text(d, (160, y), detail, "xs", WHOOP["muted"])
+
+    whoop_nav(d, "Train")
     im.save(path)
 
 
@@ -317,6 +460,8 @@ Status: Working wireframe v1
 
 - `mock-today-dashboard.png`
 - `mock-training-workouts.png`
+- `mock-today-dashboard-whoop-vibe.png`
+- `mock-training-workouts-whoop-vibe.png`
 - `life-app-wireframe-board.svg`
 - `life-app-wireframe-board.html`
 """, encoding="utf-8")
@@ -325,6 +470,8 @@ Status: Working wireframe v1
 if __name__ == "__main__":
     draw_today(OUT / "mock-today-dashboard.png")
     draw_training(OUT / "mock-training-workouts.png")
+    draw_today_whoop(OUT / "mock-today-dashboard-whoop-vibe.png")
+    draw_training_whoop(OUT / "mock-training-workouts-whoop-vibe.png")
     make_svg_board(OUT / "life-app-wireframe-board.svg")
     make_html(OUT / "life-app-wireframe-board.html")
     make_markdown(OUT / "life-app-wireframe-v1.md")

@@ -16,5 +16,7 @@ Files:
 - `life-app-wireframe-board.svg` - single-image overview wireframe.
 - `mock-today-dashboard.png` - polished Today screen mock image.
 - `mock-training-workouts.png` - polished Training screen mock image.
+- `mock-today-dashboard-whoop-vibe.png` - dark recovery-first Today mock image.
+- `mock-training-workouts-whoop-vibe.png` - dark performance Training mock image.
 - `generate_life_app_wireframes.py` - generator for the saved visual assets.
 - `color-schemes/` - visual palette/vibe options for the app.

@@ -52,5 +52,7 @@ Status: Working wireframe v1
 
 - `mock-today-dashboard.png`
 - `mock-training-workouts.png`
+- `mock-today-dashboard-whoop-vibe.png`
+- `mock-training-workouts-whoop-vibe.png`
 - `life-app-wireframe-board.svg`
 - `life-app-wireframe-board.html`
