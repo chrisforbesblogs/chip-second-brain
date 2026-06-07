@@ -19,7 +19,7 @@ The strongest initial position is:
 
 > LifeApp is the health command centre for people who use too many fitness apps.
 
-The product should start narrow: one daily dashboard, one simple nutrition loop, one recovery context, one habit-building system, and one weekly review. Social, deep device coverage, and AI personal trainer personas should come later.
+The product should start narrow: one daily dashboard, one simple nutrition loop, one recovery context, one habit-building system, and one weekly review. Social, deep device coverage, Runna-style running plans, and AI personal trainer personas should come later.
 
 ## Product Thesis
 
@@ -48,6 +48,7 @@ LifeApp should compete by connecting categories that are usually separate:
 ### Secondary Later Users
 
 - Endurance athletes who want Garmin/Wahoo/Strava context in one dashboard.
+- Runners training for an event who may later want structured plans, but should not define the first MVP unless Charley explicitly picks runners as the first wedge.
 - Macro trackers who want faster food logging and better daily adherence.
 - Habit-focused self-improvers who want behaviour design rather than streak guilt.
 - Beginners who need coaching and onboarding.
@@ -86,6 +87,16 @@ LifeApp should compete by connecting categories that are usually separate:
 - Does well: social activity feed, identity, routes, achievements, accountability.
 - Weakness/gap: social/activity-first, not daily health operations, nutrition, sleep, or habits.
 - LifeApp opportunity: add lightweight accountability and sharing later without making social the v1 core.
+
+### Running Programmes And Personal Trainer Apps
+
+**Runna**
+
+- Does well: personalised running plans for goals such as first 5K, faster 10K, half marathon, and marathon; expert-coach credibility; structured sessions; schedule/goal personalisation; Garmin/Apple Watch-style device use; and strong Strava distribution after Strava's 2025 acquisition announcement.
+- Pricing/positioning: public pricing currently shows `$19.99/month` or `$119.99/year`, with a Strava + Runna bundle shown by Runna support at `$149.99/year` in the US. Pricing should be rechecked in-region before commercial modelling.
+- Weakness/gap: running-specific, subscription-led, and not a whole-life health operating system. It does not solve food logging, macros, hydration, general habits, sleep routines, gym habits, or cross-category health decisions.
+- LifeApp opportunity: do not copy Runna in v1. Use Runna as proof that structured programmes can be a future paid Coach/Pro layer, while LifeApp first wins the broader daily decision layer around recovery, nutrition, hydration, training, and habits.
+- MVP implication: a Runna-like running-plan feature should not be in Phase 1. Phase 1.5 can validate runner demand with a lightweight training-goal or planned-vs-completed run companion if runners become the first segment. Full running-plan generation should remain Phase 3/later.
 
 ### Food, Nutrition, And AI Logging
 
@@ -138,6 +149,7 @@ Key differentiators:
 - Nutrition logging that balances convenience and accuracy.
 - Recovery-aware recommendations that change based on sleep/readiness/training load.
 - Weekly review loop that turns tracking into adjustment.
+- Future programme/coaching layer for specific goals, such as running plans, only after the daily loop is trusted.
 - Later AI coaches that are built on user context, not generic chatbot prompts.
 
 ## Recommended MVP
@@ -171,6 +183,7 @@ Do not build the full super app first. Build a focused v1:
 - Full Garmin/WHOOP/Wahoo/Apple/Google/Strava integration coverage.
 - Advanced micronutrient engine before basic food adherence works.
 - Complex workout-program builder before users trust the daily loop.
+- Runna-like running-plan generation, unless the product strategy changes and runners become the explicit first target segment.
 
 ## Phased Roadmap
 
@@ -196,6 +209,7 @@ Do not build the full super app first. Build a focused v1:
 - Basic wearable/activity import.
 - Better sleep/recovery summary.
 - Private accountability sharing.
+- If runners are chosen as the first segment, validate a lightweight running-plan companion: training goal, planned-vs-completed run reflection, and recovery/nutrition prompts around an existing plan.
 
 ### Phase 2 - AI And Social
 
@@ -207,7 +221,7 @@ Do not build the full super app first. Build a focused v1:
 ### Phase 3 - AI Personal Trainer And Programmes
 
 - Coach personas for lifting, running, weight loss, cycling, hybrid training.
-- Eight-week plans.
+- Runna-like running programmes and eight-week plans if users have validated demand for goal-based coaching.
 - Adaptive training changes based on recovery, schedule, and adherence.
 
 ## AI Food Logging Economics And Product Flow
@@ -253,7 +267,7 @@ Potential tiers:
 - **Free:** daily dashboard, basic habits, basic nutrition/water tracking, manual/quick-add logging, limited saved meals, weekly review, and a small AI scan trial or allowance if the economics work.
 - **Ad-supported free experiment:** only test ads in low-sensitivity surfaces. Avoid intrusive ads during food logging, recovery guidance, habit check-ins, or onboarding, and avoid ads that conflict with health goals.
 - **Premium:** ad-free experience, more AI scans, better integrations, unlimited or expanded saved meals, deeper insights, richer weekly review, advanced habit plans, and convenience features.
-- **Coach/Pro:** AI trainer personas, eight-week programmes, adaptive training/nutrition plans, deeper onboarding.
+- **Coach/Pro:** AI trainer personas, Runna-like running plans, eight-week programmes, adaptive training/nutrition plans, deeper onboarding.
 
 Avoid making basic tracking useless in the free tier. The free version needs to build trust and daily habit before upsell.
 
@@ -285,6 +299,7 @@ Early success metrics:
 
 - Who is the first user: gym lifter, runner, cyclist, hybrid athlete, weight-loss user, or general self-improver?
 - Should LifeApp start as a consumer app or a creator/coach-led app with programmes?
+- Should running plans be a later Coach/Pro feature, or is Charley choosing runners as the first narrow segment?
 - Which device integration matters first: Garmin, Apple Health, Strava, WHOOP, Wahoo, or Google Fit?
 - Is the first killer feature the daily dashboard, food photo logging, habit coaching, or AI trainer?
 - How serious should nutrition be: simple macros or Cronometer-style micronutrients?
@@ -298,15 +313,16 @@ Early success metrics:
 
 1. Pick the first target user segment.
 2. Choose the v1 wedge: daily health dashboard + basic nutrition + habit builder.
-3. Decide which first data source matters most for the prototype: manual input, Apple Health, Garmin, Strava, WHOOP, Wahoo, or another source.
-4. Create rough wireframes for onboarding, daily dashboard, food logging, habit builder, and weekly review.
-5. Validate with 5-10 target users before engineering.
-6. Convert the approved discovery summary into a PRD.
-7. Hand the PRD to architecture/engineering only after the v1 scope is locked.
+3. Decide whether running-event users are the first segment. If yes, validate a Runna-adjacent companion flow; if no, keep running plans in Coach/Pro later.
+4. Decide which first data source matters most for the prototype: manual input, Apple Health, Garmin, Strava, WHOOP, Wahoo, or another source.
+5. Create rough wireframes for onboarding, daily dashboard, food logging, habit builder, and weekly review.
+6. Validate with 5-10 target users before engineering.
+7. Convert the approved discovery summary into a PRD.
+8. Hand the PRD to architecture/engineering only after the v1 scope is locked.
 
 ## Key Product Decision
 
-LifeApp should not begin as “everything Garmin + MyFitnessPal + Strava + Atomic Habits + AI trainer.” That is the long-term vision.
+LifeApp should not begin as “everything Garmin + MyFitnessPal + Strava + Runna + Atomic Habits + AI trainer.” That is the long-term vision.
 
 The first build should prove this daily loop:
 

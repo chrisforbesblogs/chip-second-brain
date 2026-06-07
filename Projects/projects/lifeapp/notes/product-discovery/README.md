@@ -8,6 +8,7 @@ This folder contains the LifeApp discovery work that should be visible under the
 - `step-01-transcript-product-brief-2026-06-07.md` - First product brief from the Telegram transcript and working notes.
 - `step-02a-wearable-recovery-competitors-2026-06-07.md` - Wearable and recovery competitor pass covering Bevel, Garmin Connect, WHOOP, Wahoo, and Strava.
 - `step-02b-food-nutrition-competitors-2026-06-07.md` - Food and nutrition competitor pass covering MyFitnessPal, Cronometer, MacroFactor, Cal AI, and AI photo food logging.
+- `step-02d-runna-running-program-competitor-2026-06-07.md` - Runna competitor pass covering running plans, coach/programme positioning, pricing signals, and MVP priority.
 - `step-02c1-simple-habit-trackers-2026-06-07.md` - Simple habit tracker competitor pass covering Habitify, Streaks, Done, and Way of Life.
 - `step-02c2-behaviour-change-habit-apps-2026-06-07.md` - Behaviour-change habit app pass covering Fabulous, Productive, Habitica, and coaching-style habit products.
 - `step-03-mvp-roadmap-2026-06-07.md` - MVP wedge, phased roadmap, what not to build first, validation tests, and success metrics.
@@ -18,3 +19,4 @@ This folder contains the LifeApp discovery work that should be visible under the
 
 - Final merge complete.
 - ChipThink review/refinement complete: monetization wording tightened, validation metrics added, and project README status updated.
+- Runna update complete: added running-program competitor note and kept full Runna-like plans out of Phase 1.
