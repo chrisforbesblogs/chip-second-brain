@@ -1,4 +1,4 @@
-# Life App Clickable Prototype v2
+# Life App Clickable Prototype v2.1
 
 Standalone, dependency-free HTML prototype for the Life App MVP.
 
@@ -7,21 +7,47 @@ Standalone, dependency-free HTML prototype for the Life App MVP.
 - Open `index.html` directly in a browser.
 - Or serve this folder with any static server if preferred.
 
-## V2 flow
+## V2.1 flow
 
-The prototype now follows the updated 9-core-section onboarding formula. In the UI, those sections can be expanded into a longer micro-screen flow when that improves clarity and pacing.
+The prototype now uses a longer micro-screen onboarding flow built from the original 9 core sections. The UI expands that formula into 19 screens so the experience can feel more like a polished health / finance-style onboarding journey without turning into a boring form.
 
-Core sections:
+Core section order preserved:
 
-1. Welcome
+1. Promise / welcome
 2. Goals
 3. Training baseline
 4. Experience level
 5. Nutrition baseline
-6. Connect data
+6. Data source / trust
 7. Plan preview
 8. Account setup / save plan
 9. Premium preview
+
+Micro-screen breakdown in v2.1:
+
+1. Welcome
+2. Primary goal
+3. Secondary goal
+4. Training days per week
+5. Training type
+6. Training confidence
+7. Experience level
+8. Nutrition tracking style
+9. Nutrition focus
+10. Hydration / fuel confidence
+11. Data source choice
+12. Garmin trust copy
+13. Consent / data state explanation
+14. Plan generation / loading
+15. Plan preview summary
+16. Account setup / save plan
+17. Premium preview
+18. Continue free lands in the main app
+19. Main app Today after dismissing the paywall
+
+The prototype keeps account setup near the end and keeps the paywall dismissible with Continue free.
+
+## Main app
 
 After onboarding, the main app uses the v2 bottom navigation:
 
@@ -33,19 +59,18 @@ After onboarding, the main app uses the v2 bottom navigation:
 
 Profile / Settings stays top-right and holds theme controls. Theme selection is not shown in onboarding or on the main dashboard.
 
-## What changed in v2
+## What changed in v2.1
 
-- Habits was removed from onboarding and from the primary navigation.
-- Log replaces Habits as the fifth bottom-nav tab.
-- Experience level now changes dashboard density and copy:
-  - Beginner: cleaner, larger cards, fewer metrics, more explanation.
-  - Intermediate: balanced signal summary and guidance.
-  - Advanced: denser metrics, sparklines/compact cards, and more driver breakdowns.
-- Today is the strongest surface and now shows readiness, training guidance, nutrition/hydration guidance, and data-state labels.
+- Onboarding expands from 9 sections into a longer 19-screen micro-flow.
+- The old 9 sections are still the backbone of the flow, but each major section now has a smaller, more intentional decision screen.
+- Habits remains removed from the prototype.
+- Log stays as the fifth bottom-nav tab.
+- Beginner / Intermediate / Advanced still changes dashboard density and copy.
+- Today remains the strongest screen and now updates from onboarding choices for goals, training rhythm, training type, experience level, nutrition posture, hydration confidence, and data source.
 - Nutrition uses training-day targets, quick add, recent meals, and an insight block.
 - Calendar uses a week view with readiness/load markers, session types, recovery, nutrition focus, and log markers.
 - Log includes body weight progression, lifting progress, Garmin health history, manual check-ins, and nutrition history.
-- The paywall is dismissible and placed after the plan/account value is visible.
+- The paywall is dismissible and appears after the plan/account save moment.
 
 ## State and interactions
 
@@ -68,6 +93,8 @@ Profile / Settings stays top-right and holds theme controls. Theme selection is 
 
 - The embedded JavaScript is kept dependency-free and should compile in a plain browser.
 - Verify onboarding button flow, option selection, and navigation switching after changes.
+- Confirm the onboarding screens can be progressed through all the way to Today.
+- Confirm Continue free works and closes the paywall.
 - Check that no string-literal or apostrophe syntax issue has been introduced.
 - Confirm the chosen experience level changes dashboard density and Today copy.
 - Confirm profile/theme controls stay out of onboarding and the main dashboard.
