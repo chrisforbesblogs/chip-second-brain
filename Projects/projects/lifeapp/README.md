@@ -25,3 +25,6 @@ LifeApp is a new project started from the `#project-lifeapp` Discord channel on 
 - Decisions: `DECISIONS.md`
 - Next steps: `NEXT_STEPS.md`
 - Links: `links.md`
+- Telegram transcript: `notes/telegram-voice-transcript-2026-06-07.md`
+- Working summary/questions: `notes/working-summary-and-questions-2026-06-07.md`
+- Product discovery notes: `notes/product-discovery/README.md`
