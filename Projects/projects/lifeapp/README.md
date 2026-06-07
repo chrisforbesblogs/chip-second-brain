@@ -14,13 +14,14 @@ LifeApp is a new project started from the `#project-lifeapp` Discord channel on 
 
 ## Status
 
-- Stage: Product discovery complete
-- Current focus: Review the final product discovery summary with Charley, choose the first target user, and lock the v1 wedge before any architecture or engineering work.
-- Next milestone: Convert the approved discovery summary into a PRD.
+- Stage: MVP spec locked for first prototype
+- Current focus: Build a clickable prototype around the approved v1 flow and light/dark design direction.
+- Next milestone: Prototype Today, Training, Nutrition, Habits, Calendar, Profile, and onboarding.
 
 ## Key Links
 
 - Brief: `PROJECT_BRIEF.md`
+- MVP spec: `MVP_SPEC.md`
 - Source-of-truth notes: `SOURCE_OF_TRUTH.md`
 - Decisions: `DECISIONS.md`
 - Next steps: `NEXT_STEPS.md`
