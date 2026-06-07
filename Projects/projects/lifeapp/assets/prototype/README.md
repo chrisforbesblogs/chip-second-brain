@@ -9,7 +9,7 @@ Standalone, dependency-free HTML prototype for the Life App MVP.
 
 ## V2.1 flow
 
-The prototype now uses a longer micro-screen onboarding flow built from the original 9 core sections. The UI expands that formula into 19 screens so the experience can feel more like a polished health / finance-style onboarding journey without turning into a boring form.
+The prototype now uses a longer micro-screen onboarding flow built from the original 9 core sections. The UI expands that formula into 18 onboarding screens before the main app so the experience can feel more like a polished health / finance-style onboarding journey without turning into a boring form.
 
 Core section order preserved:
 
@@ -40,12 +40,11 @@ Micro-screen breakdown in v2.1:
 13. Consent / data state explanation
 14. Plan generation / loading
 15. Plan preview summary
-16. Account setup / save plan
-17. Premium preview
-18. Continue free lands in the main app
-19. Main app Today after dismissing the paywall
+16. Save your plan
+17. Account options
+18. Premium preview
 
-The prototype keeps account setup near the end and keeps the paywall dismissible with Continue free.
+The prototype keeps account setup near the end and keeps the paywall dismissible with Continue free, which lands in the main app Today screen.
 
 ## Main app
 
@@ -61,7 +60,7 @@ Profile / Settings stays top-right and holds theme controls. Theme selection is 
 
 ## What changed in v2.1
 
-- Onboarding expands from 9 sections into a longer 19-screen micro-flow.
+- Onboarding expands from 9 sections into a longer 18-screen micro-flow before the main app.
 - The old 9 sections are still the backbone of the flow, but each major section now has a smaller, more intentional decision screen.
 - Habits remains removed from the prototype.
 - Log stays as the fifth bottom-nav tab.
