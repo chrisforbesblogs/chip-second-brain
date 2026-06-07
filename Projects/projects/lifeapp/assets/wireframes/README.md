@@ -8,6 +8,7 @@ Current v1 scope:
 - Today, Calendar, Training, Nutrition and Habits bottom navigation.
 - Profile/settings entry in the top-right, inspired by Garmin Connect.
 - Training has Today and Workouts sub-tabs.
+- Clickable prototype lives in `assets/prototype/`.
 
 Files:
 
@@ -20,3 +21,4 @@ Files:
 - `mock-training-workouts-whoop-vibe.png` - dark performance Training mock image.
 - `generate_life_app_wireframes.py` - generator for the saved visual assets.
 - `color-schemes/` - visual palette/vibe options for the app.
+- `../prototype/` - standalone clickable HTML prototype.
