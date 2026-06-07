@@ -3,7 +3,7 @@
 ## Approved Sources
 
 - Discord: `#project-lifeapp` (`channel:1513145157980127282`)
-- Telegram: created by Charley on 2026-06-07, exact name/link pending
+- Telegram: created by Charley on 2026-06-07, invite `https://t.me/+0AuiFSowYh1hYTM0`
 - Project memory folder: `/home/cef-admin/.openclaw/workspace/second-brain/Projects/projects/lifeapp`
 
 ## Discord
@@ -24,7 +24,7 @@ The Telegram group has been created and is approved as the second source of trut
 Pending details:
 
 - Exact Telegram group name
-- Telegram invite link or stable identifier
+- Stable Telegram identifier, once OpenClaw can see the group
 - The three participants in the group
 - Whether Telegram decisions should be mirrored into this folder after each session, or summarized in `#project-lifeapp`
 

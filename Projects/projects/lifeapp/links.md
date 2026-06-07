@@ -3,7 +3,7 @@
 ## Channels
 
 - Discord: `#project-lifeapp` (`channel:1513145157980127282`)
-- Telegram: Created by Charley on 2026-06-07, exact name/link pending
+- Telegram: `https://t.me/+0AuiFSowYh1hYTM0`
 
 ## Repositories
 
