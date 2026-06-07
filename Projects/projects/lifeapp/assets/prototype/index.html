@@ -49,7 +49,7 @@
     .btn,.tab,.nav button{cursor:pointer;border:0}.btn{width:100%;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,var(--accent),#e9ffb4);color:#102033;font-weight:800}.btn.secondary{background:var(--surface-strong);color:var(--text);border:1px solid var(--line)}.btn.small{width:auto;padding:10px 12px;border-radius:999px;font-size:.86rem}
     .stack{display:grid;gap:10px}.choice{padding:14px;border-radius:18px;border:1px solid var(--line);background:var(--surface-strong)}.choice.active{outline:2px solid var(--accent)}
     .tabs{display:flex;gap:8px;margin:8px 0 14px}.tab{flex:1;padding:11px 12px;border-radius:999px;background:transparent;color:var(--muted);border:1px solid var(--line)}.tab.active{background:var(--surface-strong);color:var(--text);font-weight:700}
-    .nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(430px,calc(100% - 14px));display:flex;justify-content:space-between;padding:10px;background:var(--nav);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.nav button{flex:1;background:transparent;color:var(--muted);padding:10px 6px;border-radius:14px}.nav button.active{color:var(--text);background:rgba(183,255,91,.12)}
+    .nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(430px,calc(100% - 14px));display:flex;justify-content:space-between;padding:10px;background:var(--nav);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.nav.hidden{display:none}.nav button{flex:1;background:transparent;color:var(--muted);padding:10px 6px;border-radius:14px}.nav button.active{color:var(--text);background:rgba(183,255,91,.12)}
     .mini{font-size:.82rem;color:var(--muted)} .split{display:flex;justify-content:space-between;gap:10px;align-items:center}.kbd{font-size:.76rem;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted)}
     .progress{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}.dot{flex:1;height:6px;border-radius:999px;background:var(--line)}.dot.active{background:var(--accent)}
     .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface-strong);font-size:.78rem;color:var(--muted)}.badge.good{background:rgba(23,201,100,.12);color:var(--text)}
@@ -82,7 +82,7 @@
     </section>
 
     <section class="screen" data-screen="goals">
-      <div class="card"><div class="split"><h2>Goals</h2><span class="kbd">2/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Pick the outcomes you want Life App to keep you honest about.</p><div class="stack"><div class="choice active"><b>Improve endurance</b><div class="small">Train smarter and recover well.</div></div><div class="choice"><b>Build fitness</b><div class="small">Show up consistently and keep moving.</div></div><div class="choice"><b>Improve protein</b><div class="small">Keep nutrition simple and visible.</div></div><div class="choice"><b>Recover better</b><div class="small">Sleep more, manage load, stay steady.</div></div></div><div style="height:12px"></div><button class="btn" data-go="training-context">Continue</button></div>
+      <div class="card"><div class="split"><h2>Goals</h2><span class="kbd">2/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Pick the outcomes you want Life App to keep you honest about.</p><div class="stack"><div class="choice active" data-goal="Improve endurance"><b>Improve endurance</b><div class="small">Train smarter and recover well.</div></div><div class="choice" data-goal="Build fitness"><b>Build fitness</b><div class="small">Show up consistently and keep moving.</div></div><div class="choice active" data-goal="Improve protein"><b>Improve protein</b><div class="small">Keep nutrition simple and visible.</div></div><div class="choice active" data-goal="Recover better"><b>Recover better</b><div class="small">Sleep more, manage load, stay steady.</div></div></div><div style="height:12px"></div><button class="btn" data-go="training-context">Continue</button></div>
     </section>
 
     <section class="screen" data-screen="training-context">
@@ -98,11 +98,11 @@
     </section>
 
     <section class="screen" data-screen="data-source">
-      <div class="card"><div class="split"><h2>Data source</h2><span class="kbd">6/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Choose where Life App should read your health signals from.</p><div class="stack"><div class="source active"><b>Garmin</b><div class="small">Connect Garmin to turn sleep, HRV, training load, steps, and workouts into today's plan.</div></div><div class="source"><b>Other wearable/app</b><div class="small">Apple Health, Strava, WHOOP, Wahoo, or another tracker. Coming next; use manual or demo data today.</div></div><div class="source"><b>No connection / manual entry</b><div class="small">Use a 3-touch daily check-in for sleep, body, and training.</div></div></div><div style="height:12px"></div><button class="btn" data-go="plan-preview">Continue</button></div>
+      <div class="card"><div class="split"><h2>Data source</h2><span class="kbd">6/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Choose where Life App should read your health signals from.</p><div class="stack"><div class="source active" data-source="garmin"><b>Garmin</b><div class="small">Connect Garmin to turn sleep, HRV, training load, steps, and workouts into today's plan.</div></div><div class="source" data-source="other"><b>Other wearable/app</b><div class="small">Apple Health, Strava, WHOOP, Wahoo, or another tracker. Coming next; use manual or demo data today.</div></div><div class="source" data-source="manual"><b>No connection / manual entry</b><div class="small">Use a 3-touch daily check-in for sleep, body, and training.</div></div></div><div style="height:12px"></div><button class="btn" data-go="plan-preview">Continue</button></div>
     </section>
 
     <section class="screen" data-screen="plan-preview">
-      <div class="card"><div class="split"><h2>Mode, theme, plan preview</h2><span class="kbd">7/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div><p class="small" style="margin:10px 0 12px">Choose how Life App should speak to you.</p><div class="split-2"><div class="choice active"><b>Simple</b><div class="small">Fewer metrics, direct actions.</div></div><div class="choice"><b>Performance</b><div class="small">More signals, compact athlete view.</div></div></div><div style="height:10px"></div><div class="split-2"><div class="choice active"><b>Dark</b><div class="small">Performance cockpit.</div></div><div class="choice"><b>Light</b><div class="small">Clean daytime mode.</div></div></div><div style="height:10px"></div><div class="card" style="margin:12px 0 0;padding:14px;background:var(--surface-strong)"><div class="badge good">Ready to train</div><h3 style="margin:10px 0 8px">Today looks like a moderate day</h3><p class="small">Keep training easy, hit 140g protein, drink 3.2L water, and finish your mobility habit.</p><div style="height:12px"></div><button class="btn" data-go="today">See Today</button></div></div>
+      <div class="card"><div class="split"><h2>Mode, theme, plan preview</h2><span class="kbd">7/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div><p class="small" style="margin:10px 0 12px">Choose how Life App should speak to you.</p><div class="split-2"><div class="choice active" data-mode="simple"><b>Simple</b><div class="small">Fewer metrics, direct actions.</div></div><div class="choice" data-mode="performance"><b>Performance</b><div class="small">More signals, compact athlete view.</div></div></div><div style="height:10px"></div><div class="split-2"><div class="choice active" data-theme-option="dark"><b>Dark</b><div class="small">Performance cockpit.</div></div><div class="choice" data-theme-option="light"><b>Light</b><div class="small">Clean daytime mode.</div></div></div><div style="height:10px"></div><div class="card" style="margin:12px 0 0;padding:14px;background:var(--surface-strong)"><div class="badge good">Ready to train</div><h3 style="margin:10px 0 8px">Today looks like a moderate day</h3><p class="small">Keep training easy, hit 140g protein, drink 3.2L water, and finish your mobility habit.</p><div style="height:12px"></div><button class="btn" data-go="today">See Today</button></div></div>
     </section>
 
     <section class="screen" data-screen="today">
@@ -215,6 +215,7 @@
   <script>
     const root = document.body;
     const screens = [...document.querySelectorAll('.screen')];
+    const nav = document.querySelector('.nav');
     const navButtons = [...document.querySelectorAll('.nav button')];
     const themeToggle = document.getElementById('themeToggle');
     const themeKey = 'lifeapp-theme';
@@ -224,7 +225,19 @@
       other: { label: 'Other wearable/app · Coming next · Use manual or demo data today.', meta: 'Demo wearable data', signals: 'Sleep 7h 10m · Recovery steady · Load moderate', training: 'Normalized wearable signals', trainingText: 'Last workout: 2 days ago · Training load: moderate · Recovery: stable · Sleep: 7h 10m.', calendar: 'Habit: 4/7 done · Nutrition: steady · Rest: one recovery day planned.', insight: 'Your wearable path is coming next. For now, use the same daily plan and manual check-ins.' },
       manual: { label: 'Manual · 3-touch check-in active.', meta: 'Manual entry today', signals: 'Sleep 7h · Energy okay · Load estimated', training: 'Manual signals', trainingText: 'Last workout: entered manually · Training load: estimated · Recovery: self-reported · Sleep: 7h.', calendar: 'Habit: 3/7 done · Nutrition: manual log · Rest: one flexible recovery block planned.', insight: 'No connection yet, so Life App is using your manual check-ins to guide the day.' }
     };
-    const show = (name) => { screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name)); navButtons.forEach(b => b.classList.toggle('active', b.dataset.nav === name)); };
+    const onboardingScreens = new Set(['onboarding', 'goals', 'training-context', 'nutrition-hydration', 'habits-setup', 'data-source', 'plan-preview']);
+    const show = (name) => {
+      screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name));
+      navButtons.forEach(b => b.classList.toggle('active', b.dataset.nav === name));
+      nav.classList.toggle('hidden', onboardingScreens.has(name));
+    };
+    const makeExclusive = (item, selector) => {
+      item.parentElement.querySelectorAll(selector).forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+    };
+    const syncThemeChoice = () => {
+      document.querySelectorAll('[data-theme-option]').forEach(el => el.classList.toggle('active', el.dataset.themeOption === state.theme));
+    };
     const applyState = () => {
       const c = sourceCopy[state.source];
       document.getElementById('todayMeta').textContent = `Sun 7 Jun · ${c.meta}`;
@@ -238,7 +251,7 @@
       document.getElementById('profileMode').textContent = `${state.mode === 'simple' ? 'Simple' : 'Performance'} · Goals · Notifications`;
       document.getElementById('profileGoals').textContent = state.goals.join(', ').toLowerCase();
       document.getElementById('trainingSummary').textContent = state.mode === 'simple' ? 'Easy session · 35-45 min · moderate effort' : 'Upper body + zone 2 finish · 45 min · Moderate';
-      document.getElementById('trainingWhy').textContent = state.mode === 'simple' ? 'Keep it manageable and consistent while the body settles in.' : 'Sleep was good, HRV steady, but yesterday's load was still meaningful.';
+      document.getElementById('trainingWhy').textContent = state.mode === 'simple' ? 'Keep it manageable and consistent while the body settles in.' : "Sleep was good, HRV steady, but yesterday's load was still meaningful.";
       document.getElementById('habitConsistency').textContent = state.mode === 'simple' ? 'You hit habits 4 of the last 7 days. Keep the streak pressure low; aim for steady repeatability.' : 'You hit habits 5 of the last 7 days. Keep the streak pressure low; aim for steady repeatability.';
       document.getElementById('sleepMetric').textContent = state.source === 'manual' ? 'Okay' : 'Good';
       document.getElementById('recoveryMetric').textContent = state.source === 'other' ? 'Steady' : 'Stable';
@@ -260,11 +273,59 @@
       document.getElementById('fatMetric').textContent = '80g';
       document.getElementById('waterMetric').textContent = state.source === 'manual' ? '2.5L' : '3.2L';
     };
-    document.addEventListener('click', (e) => { const go = e.target.closest('[data-go]'); const nav = e.target.closest('[data-nav]'); if (go) { if (go.dataset.go === 'today' && !document.querySelector('.modal-backdrop.show')) document.getElementById('paywallBackdrop').classList.add('show'); else show(go.dataset.go); } if (nav) show(nav.dataset.nav); });
-    const saved = localStorage.getItem(themeKey) || 'dark'; root.setAttribute('data-theme', saved); state.theme = saved; themeToggle.textContent = saved === 'dark' ? 'Dark' : 'Light'; themeToggle.addEventListener('click', () => { const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); localStorage.setItem(themeKey, next); state.theme = next; themeToggle.textContent = next === 'dark' ? 'Dark' : 'Light'; applyState(); });
+    document.addEventListener('click', (e) => {
+      const source = e.target.closest('[data-source]');
+      const mode = e.target.closest('[data-mode]');
+      const themeOption = e.target.closest('[data-theme-option]');
+      const goal = e.target.closest('[data-goal]');
+      const setupChoice = e.target.closest('.screen .choice:not([data-goal]):not([data-mode]):not([data-theme-option])');
+      const go = e.target.closest('[data-go]');
+      const navItem = e.target.closest('[data-nav]');
+
+      if (source) {
+        state.source = source.dataset.source;
+        makeExclusive(source, '[data-source]');
+        applyState();
+        return;
+      }
+      if (mode) {
+        state.mode = mode.dataset.mode;
+        makeExclusive(mode, '[data-mode]');
+        applyState();
+        return;
+      }
+      if (themeOption) {
+        const next = themeOption.dataset.themeOption;
+        state.theme = next;
+        root.setAttribute('data-theme', next);
+        localStorage.setItem(themeKey, next);
+        themeToggle.textContent = next === 'dark' ? 'Dark' : 'Light';
+        makeExclusive(themeOption, '[data-theme-option]');
+        applyState();
+        return;
+      }
+      if (goal) {
+        goal.classList.toggle('active');
+        const selectedGoals = [...document.querySelectorAll('[data-goal].active')].map(el => el.dataset.goal);
+        state.goals = selectedGoals.length ? selectedGoals : ['Build fitness'];
+        applyState();
+        return;
+      }
+      if (setupChoice && !e.target.closest('[data-go]')) {
+        makeExclusive(setupChoice, '.choice');
+        return;
+      }
+      if (go) {
+        if (go.dataset.go === 'today' && !document.querySelector('.modal-backdrop.show')) document.getElementById('paywallBackdrop').classList.add('show');
+        else show(go.dataset.go);
+      }
+      if (navItem) show(navItem.dataset.nav);
+    });
+    const saved = localStorage.getItem(themeKey) || 'dark'; root.setAttribute('data-theme', saved); state.theme = saved; themeToggle.textContent = saved === 'dark' ? 'Dark' : 'Light'; syncThemeChoice(); themeToggle.addEventListener('click', () => { const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); localStorage.setItem(themeKey, next); state.theme = next; themeToggle.textContent = next === 'dark' ? 'Dark' : 'Light'; syncThemeChoice(); applyState(); });
     document.getElementById('closePaywall').addEventListener('click', () => document.getElementById('paywallBackdrop').classList.remove('show'));
     document.getElementById('continueFree').addEventListener('click', () => { document.getElementById('paywallBackdrop').classList.remove('show'); show('today'); });
     applyState();
+    show('onboarding');
   </script>
 </body>
 </html>
