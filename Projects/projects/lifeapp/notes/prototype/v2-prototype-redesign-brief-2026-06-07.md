@@ -4,6 +4,12 @@ Date: 2026-06-07
 Status: Prototype redesign brief for ChipCode
 Owner: ChipBoss acting as architect after subagent write failure
 
+Source inputs:
+- User prototype review and v2 answers from 2026-06-07.
+- Account setup onboarding audit: `account-setup-onboarding-audit-2026-06-07.md`.
+- Pricing strategy: `pricing-strategy-2026-06-07.md`.
+- Onboarding pattern research: `onboarding-patterns-health-fitness-mobbin-2026-06-07.md`.
+
 ## Purpose
 
 V2 should stop being a broad demo and become a sharper product prototype.
@@ -33,12 +39,18 @@ The bridge between both is guidance: the app should not just show data, it shoul
 
 ## Revised Onboarding
 
-Recommended onboarding sequence:
+Recommended onboarding sequence is a 9-screen formula. If the prototype needs fewer steps, combine Plan Preview and Account Setup, but keep account setup near the end and do not move theme choice into onboarding.
+
+Research note:
+Mobbin was partially accessible/login-gated during the onboarding research pass, so the v2 formula uses partial Mobbin context plus known public health, fitness, wearable, nutrition, and coaching app patterns. The usable pattern is consistent: promise first, one decision per screen, show a value preview before account/payment, place trust copy near data access, and make advanced depth a density setting rather than a separate product.
 
 1. Welcome
    - Replace "one clear health plan for today."
    - Suggested headline: "Your health data, turned into useful guidance."
    - Supporting copy: "Connect your training, recovery, nutrition, and logs so Life App can show what matters and what to do next."
+   - CTAs:
+     - Start setup.
+     - Preview with demo data.
 
 2. Goals
    - Keep this screen.
@@ -47,6 +59,7 @@ Recommended onboarding sequence:
      - Improve body composition.
      - Recover better.
      - Build consistency.
+   - Let the user choose 1-2 goals, not a long list.
 
 3. Training Baseline
    - Split current training context into clearer pieces.
@@ -59,6 +72,7 @@ Recommended onboarding sequence:
      - Running/cardio.
      - Hybrid.
      - General fitness.
+   - Keep this as ranges and simple labels, not a detailed questionnaire.
 
 4. Experience Level
    - Beginner / Intermediate / Advanced.
@@ -66,6 +80,7 @@ Recommended onboarding sequence:
    - Beginner: clean, action-led, fewer metrics.
    - Intermediate: balanced signal summary and guidance.
    - Advanced: dense metrics, trends, and deeper analysis.
+   - Persist this to Profile/Settings and allow it to change later.
 
 5. Nutrition Baseline
    - Cleaner than current version.
@@ -78,6 +93,7 @@ Recommended onboarding sequence:
      - Calories/body weight.
      - Fuel training.
      - Hydration.
+   - Avoid habit examples here. This screen sets nutrition posture only.
 
 6. Connect Data
    - Combine data source with trust copy.
@@ -86,11 +102,21 @@ Recommended onboarding sequence:
      - Other wearable/app.
      - Manual/demo.
    - Explain source state clearly: synced, simulated, manual, or missing.
+   - Trust copy belongs here:
+     - "You control connections and can disconnect anytime."
+     - "Life App uses health and training data for recommendations, not medical advice."
+     - "We show when data is synced, simulated, manual, or missing."
 
 7. Plan Preview
    - Show a mini Today preview based on the user's choices.
    - Include clean summary and, for Advanced, a denser signal preview.
    - Do not ask for theme here.
+   - Show value before identity or payment:
+     - readiness/recovery label.
+     - training action.
+     - nutrition focus.
+     - hydration target.
+     - log prompt.
 
 8. Account Setup / Save Plan
    - Near the end of onboarding.
@@ -103,6 +129,7 @@ Recommended onboarding sequence:
    - Include trust copy:
      - "You control connections and can disconnect anytime."
      - "Life App uses health and training data for recommendations, not medical advice."
+     - "Your data is used for recommendations in Life App, not sold."
 
 9. Premium Preview
    - Keep similar location to current paywall: after plan preview/account save moment, before or on first Today.
@@ -112,6 +139,15 @@ Recommended onboarding sequence:
      - Premium Monthly: GBP9.99 / $12.99.
      - Premium Annual: GBP69.99 / $89.99, Best value.
      - Coach Later: from GBP29.99 / $39.99, Coming later.
+
+Avoid:
+- Sign-up-first onboarding.
+- Medical-style questionnaires.
+- Theme choice in onboarding.
+- Habits setup in v2 onboarding.
+- Device dead ends when Garmin is missing.
+- Paywall-as-account-setup.
+- One giant preferences screen.
 
 ## Experience Levels
 
@@ -269,6 +305,60 @@ Responsibilities:
 
 Theme does not belong in onboarding or the main dashboard.
 
+## Colour And Theme Direction
+
+V2 should be dark-first. Strong performance and wearable products often use dark-first flows because they make readiness rings, recovery labels, load charts, and premium data cards feel focused. The risk is muddy contrast or making the product feel too intense for normal users, so the dark system needs clear surfaces, readable text, and non-colour labels.
+
+Light theme can exist later in Profile/Settings. It should not be selected during onboarding.
+
+Recommended palette direction:
+- Base dark: near-black charcoal with a subtle green-grey undertone.
+- Surfaces: layered dark graphite, not flat black.
+- Primary text: warm off-white.
+- Secondary text: muted grey-green.
+- Primary accent: clean performance green, less acidic than WHOOP.
+- Secondary accent: controlled blue for training/load and data.
+- Warm accent: amber for fuel, nutrition, and attention states.
+- Hydration accent: cyan/teal-blue.
+- Warning accent: coral/red, used sparingly.
+
+Suggested tokens for prototype:
+- Dark background: `#080C0D`.
+- Dark surface: `#121819`.
+- Elevated surface: `#1A2224`.
+- Primary text: `#F4F7F2`.
+- Secondary text: `#9AA7A2`.
+- Performance green: `#4DDF87`.
+- Training blue: `#5E9CFF`.
+- Nutrition amber: `#F2B84B`.
+- Hydration cyan: `#43C7D9`.
+- Warning coral: `#FF6B5F`.
+- Progress mint: `#78E3B0`.
+- Light background for later settings theme: `#F5F7F3`.
+- Light surface for later settings theme: `#FFFFFF`.
+- Light text for later settings theme: `#17201A`.
+
+Accent rules:
+- Readiness/recovery: green for ready, amber for moderate, coral for low/recover. Always include text labels.
+- Training load: blue scale for load and intensity.
+- Nutrition: amber/gold for calories, fuel, meal timing, and protein prompts.
+- Hydration: cyan/teal-blue for water targets and hydration status.
+- Warnings: coral/red only for clear risks or missing critical actions.
+- Positive progress: mint/green with check states, trend arrows, and small celebrations.
+
+Avoid:
+- Dull grey calendar grid as the main Calendar identity.
+- Cheap neon glow styling.
+- Medical blue/white clinic styling.
+- Muddy dark UI with weak surface separation.
+- One-note palettes where every metric is green, blue, or purple.
+- Copying WHOOP, Garmin, or Apple exact ring language or palette.
+
+Experience-level visual differences:
+- Beginner: larger cards, fewer accents, more whitespace, clearer labels, more reassurance.
+- Intermediate: medium-density cards, more secondary metrics, subtle trend accents, shorter explanations.
+- Advanced: compact cards, sparklines, segmented status chips, denser grids, deeper driver breakdowns.
+
 ## Paywall
 
 Placement:
@@ -312,6 +402,8 @@ Required prototype v2 changes:
 - Ensure nav is Today, Training, Nutrition, Calendar, Log.
 - Keep Profile/Settings accessible from top-right.
 - Make setup choices visibly affect Today/Profile/Log copy.
+- Apply dark-first colour system and accent rules.
+- Use density and explanation depth to distinguish Beginner/Intermediate/Advanced, not separate brands.
 - Verify embedded JavaScript compiles before committing.
 
 ## Open Questions For Later
