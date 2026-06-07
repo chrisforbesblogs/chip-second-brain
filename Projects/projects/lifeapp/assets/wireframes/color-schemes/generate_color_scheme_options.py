@@ -86,6 +86,21 @@ PALETTES = [
         "danger": "#ee4266",
         "line": "#d9e1ef",
     },
+    {
+        "slug": "05-whoop-inspired-performance",
+        "name": "WHOOP-Inspired Performance",
+        "why": "Dark, serious, recovery-led, and built around daily body signals.",
+        "bg": "#050608",
+        "card": "#111417",
+        "ink": "#f6f8f2",
+        "muted": "#8b958f",
+        "primary": "#c7ff3d",
+        "secondary": "#45d483",
+        "accent": "#ffb340",
+        "danger": "#ff5f5a",
+        "line": "#252a2f",
+        "layout": "performance",
+    },
 ]
 
 
@@ -102,7 +117,90 @@ def progress(draw, x, y, w, pct, palette, color):
     rr(draw, (x, y, x + int(w * pct), y + 8), radius=4, fill=color)
 
 
+def ring(draw, cx, cy, radius, pct, palette, color, width=13):
+    box = (cx - radius, cy - radius, cx + radius, cy + radius)
+    draw.arc(box, start=0, end=360, fill=palette["line"], width=width)
+    draw.arc(box, start=-90, end=-90 + int(360 * pct), fill=color, width=width)
+
+
+def draw_performance_option(palette):
+    im = Image.new("RGB", (900, 1100), palette["bg"])
+    d = ImageDraw.Draw(im)
+
+    text(d, (48, 58), palette["name"], palette, "xl")
+    text(d, (50, 94), palette["why"], palette, "sm", palette["muted"])
+    text(d, (50, 122), "Reference direction: WHOOP-like intensity, not a copy.", palette, "xs", palette["muted"])
+
+    swatches = [
+        ("Recovery", palette["primary"]),
+        ("Body", palette["secondary"]),
+        ("Load", palette["accent"]),
+        ("Alert", palette["danger"]),
+        ("Surface", palette["card"]),
+    ]
+    x = 50
+    for label, color in swatches:
+        rr(d, (x, 158, x + 118, 218), radius=10, fill=color, outline=palette["line"])
+        text(d, (x, 240), label, palette, "xs", palette["muted"])
+        text(d, (x, 259), color.upper(), palette, "xs", palette["muted"])
+        x += 154
+
+    phone_x, phone_y = 250, 300
+    rr(d, (phone_x, phone_y, phone_x + 390, phone_y + 760), radius=42, fill="#010203", outline="#010203")
+    rr(d, (phone_x + 12, phone_y + 12, phone_x + 378, phone_y + 748), radius=34, fill=palette["bg"], outline=palette["bg"])
+
+    x0, y0 = phone_x + 34, phone_y + 42
+    text(d, (x0, y0), "Life App", palette, "bold")
+    rr(d, (phone_x + 320, y0 - 13, phone_x + 356, y0 + 23), radius=6, fill=palette["card"], outline=palette["line"])
+    text(d, (phone_x + 338, y0 + 5), "P", palette, "small_bold", palette["primary"], "mm")
+
+    text(d, (x0, y0 + 58), "Today", palette, "xl")
+    text(d, (x0, y0 + 94), "Garmin synced 12 min ago", palette, "xs", palette["muted"])
+
+    rr(d, (x0 - 8, y0 + 128, x0 + 326, y0 + 352), radius=14, fill=palette["card"], outline=palette["line"])
+    text(d, (x0 + 18, y0 + 160), "RECOVERY", palette, "small_bold", palette["muted"])
+    ring(d, x0 + 98, y0 + 258, 64, 0.82, palette, palette["primary"], 14)
+    text(d, (x0 + 98, y0 + 250), "82", palette, "xl", palette["primary"], "mm")
+    text(d, (x0 + 98, y0 + 282), "%", palette, "sm", palette["muted"], "mm")
+    text(d, (x0 + 190, y0 + 218), "Green", palette, "lg", palette["ink"])
+    text(d, (x0 + 190, y0 + 248), "Body is ready", palette, "sm", palette["muted"])
+    rr(d, (x0 + 190, y0 + 282, x0 + 306, y0 + 314), radius=7, fill=palette["primary"])
+    text(d, (x0 + 248, y0 + 300), "TRAIN OK", palette, "xs", "#050608", "mm")
+
+    metrics = [
+        ("LOAD", "12.4", palette["accent"], 0.62),
+        ("SLEEP", "91%", palette["primary"], 0.91),
+        ("HRV", "64ms", palette["secondary"], 0.74),
+    ]
+    mx = x0 - 8
+    yy = y0 + 374
+    for label, value, color, pct in metrics:
+        rr(d, (mx, yy, mx + 102, yy + 130), radius=12, fill=palette["card"], outline=palette["line"])
+        text(d, (mx + 14, yy + 28), label, palette, "xs", palette["muted"])
+        ring(d, mx + 51, yy + 72, 28, pct, palette, color, 7)
+        text(d, (mx + 51, yy + 76), value, palette, "small_bold", color, "mm")
+        mx += 116
+
+    rr(d, (x0 - 8, y0 + 526, x0 + 326, y0 + 612), radius=12, fill=palette["card"], outline=palette["line"])
+    text(d, (x0 + 18, y0 + 556), "RECOMMENDED", palette, "xs", palette["muted"])
+    text(d, (x0 + 18, y0 + 586), "Zone 2 run only", palette, "lg", palette["primary"])
+    text(d, (x0 + 258, y0 + 556), "35 min", palette, "xs", palette["muted"])
+
+    rr(d, (x0 - 10, phone_y + 690, x0 + 328, phone_y + 744), radius=14, fill="#080a0c", outline=palette["line"])
+    nav = [("TODAY", palette["primary"]), ("CAL", palette["muted"]), ("TRAIN", palette["muted"]), ("FOOD", palette["muted"]), ("HABITS", palette["muted"])]
+    nx = x0 + 28
+    for label, color in nav:
+        text(d, (nx, phone_y + 722), label, palette, "xs", color, "mm")
+        nx += 72
+
+    im.save(OUT / f"{palette['slug']}.png")
+
+
 def draw_option(palette):
+    if palette.get("layout") == "performance":
+        draw_performance_option(palette)
+        return
+
     im = Image.new("RGB", (900, 1100), palette["bg"])
     d = ImageDraw.Draw(im)
 
@@ -185,7 +283,8 @@ def write_readme():
         "Date: 2026-06-07",
         "Status: visual exploration",
         "",
-        "These options use the same Today-screen structure so the team can compare vibe, contrast and brand feel without changing the product layout.",
+        "The first four options use the same Today-screen structure so the team can compare palette, contrast and brand feel.",
+        "The WHOOP-inspired option also changes layout and component style to test a more distinct performance identity.",
         "",
     ]
     for p in PALETTES:
@@ -211,8 +310,9 @@ def write_readme():
     lines.extend([
         "## Initial Recommendation",
         "",
-        "Start with Garmin Clean for MVP because it is clear, health-first and familiar to the first target user.",
-        "Keep Performance Dark as a later Performance Mode direction if the app grows deeper for athletes.",
+        "Current preference: WHOOP-Inspired Performance.",
+        "Use it as the leading visual direction if the product should feel serious, athlete-led, and recovery-first.",
+        "Keep Garmin Clean as the safer mainstream fallback if the dark performance direction feels too intense.",
         "",
     ])
     (OUT / "README.md").write_text("\n".join(lines), encoding="utf-8")

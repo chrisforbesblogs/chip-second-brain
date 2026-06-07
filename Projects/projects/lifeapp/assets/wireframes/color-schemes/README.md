@@ -3,7 +3,8 @@
 Date: 2026-06-07
 Status: visual exploration
 
-These options use the same Today-screen structure so the team can compare vibe, contrast and brand feel without changing the product layout.
+The first four options use the same Today-screen structure so the team can compare palette, contrast and brand feel.
+The WHOOP-inspired option also changes layout and component style to test a more distinct performance identity.
 
 ## Garmin Clean
 
@@ -73,7 +74,25 @@ Palette:
 - Accent: `#ff8a00`
 - Danger: `#ee4266`
 
+## WHOOP-Inspired Performance
+
+File: `05-whoop-inspired-performance.png`
+
+Why: Dark, serious, recovery-led, and built around daily body signals.
+
+Palette:
+
+- Background: `#050608`
+- Card: `#111417`
+- Ink: `#f6f8f2`
+- Muted: `#8b958f`
+- Primary: `#c7ff3d`
+- Secondary: `#45d483`
+- Accent: `#ffb340`
+- Danger: `#ff5f5a`
+
 ## Initial Recommendation
 
-Start with Garmin Clean for MVP because it is clear, health-first and familiar to the first target user.
-Keep Performance Dark as a later Performance Mode direction if the app grows deeper for athletes.
+Current preference: WHOOP-Inspired Performance.
+Use it as the leading visual direction if the product should feel serious, athlete-led, and recovery-first.
+Keep Garmin Clean as the safer mainstream fallback if the dark performance direction feels too intense.
