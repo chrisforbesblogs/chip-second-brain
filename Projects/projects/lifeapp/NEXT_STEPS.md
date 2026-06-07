@@ -3,8 +3,8 @@
 ## Immediate
 
 - Confirm the core LifeApp idea in one or two sentences.
-- Confirm the three collaborators for the Telegram group.
-- Confirm whether Telegram group creation is approved.
+- Capture the Telegram group name/link.
+- Confirm the three collaborators in the Telegram group.
 - Decide whether a future source-code repo is needed now or after product discovery.
 
 ## Product Discovery
@@ -19,4 +19,3 @@
 - Summarize Discord voice discussions into `#project-lifeapp`.
 - Mirror Telegram decisions into `DECISIONS.md` or `SOURCE_OF_TRUTH.md`.
 - Keep implementation plans separate from product discovery until the scope is clear.
-

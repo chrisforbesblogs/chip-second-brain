@@ -3,7 +3,7 @@
 ## Approved Sources
 
 - Discord: `#project-lifeapp` (`channel:1513145157980127282`)
-- Telegram: planned LifeApp group, pending explicit approval and participant details
+- Telegram: created by Charley on 2026-06-07, exact name/link pending
 - Project memory folder: `/home/cef-admin/.openclaw/workspace/second-brain/Projects/projects/lifeapp`
 
 ## Discord
@@ -19,16 +19,15 @@ Important context captured on 2026-06-07:
 
 ## Telegram
 
-The Telegram group is requested as a second source of truth, but it has not been created yet.
+The Telegram group has been created and is approved as the second source of truth for LifeApp.
 
 Pending details:
 
 - Exact Telegram group name
-- The three participants to add
-- Approval to create the group and send invitations/messages
-- Whether Telegram decisions should be mirrored into this folder after each session
+- Telegram invite link or stable identifier
+- The three participants in the group
+- Whether Telegram decisions should be mirrored into this folder after each session, or summarized in `#project-lifeapp`
 
 ## Operating Rule
 
 If a decision happens in voice or Telegram, it should be summarized into Discord or this project folder so future agents can retrieve it reliably.
-

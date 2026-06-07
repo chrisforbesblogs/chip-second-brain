@@ -7,7 +7,7 @@ LifeApp is a new project started from the `#project-lifeapp` Discord channel on 
 ## Source
 
 - Discord source of truth: `#project-lifeapp` (`channel:1513145157980127282`)
-- Telegram source of truth: planned, pending approved group creation and participant details
+- Telegram source of truth: created by Charley on 2026-06-07, exact name/link pending
 - Local project memory: `/home/cef-admin/.openclaw/workspace/second-brain/Projects/projects/lifeapp`
 - Local source code: To create if engineering work starts
 - GitHub repo: To create if source work starts
@@ -25,4 +25,3 @@ LifeApp is a new project started from the `#project-lifeapp` Discord channel on 
 - Decisions: `DECISIONS.md`
 - Next steps: `NEXT_STEPS.md`
 - Links: `links.md`
-

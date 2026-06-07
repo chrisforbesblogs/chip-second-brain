@@ -3,7 +3,7 @@
 ## Channels
 
 - Discord: `#project-lifeapp` (`channel:1513145157980127282`)
-- Telegram: To create
+- Telegram: Created by Charley on 2026-06-07, exact name/link pending
 
 ## Repositories
 
@@ -17,4 +17,3 @@
 - `SOURCE_OF_TRUTH.md`
 - `DECISIONS.md`
 - `NEXT_STEPS.md`
-
