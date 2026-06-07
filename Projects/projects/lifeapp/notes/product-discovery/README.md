@@ -11,8 +11,8 @@ This folder contains the LifeApp discovery work that should be visible under the
 - `step-02c1-simple-habit-trackers-2026-06-07.md` - Simple habit tracker competitor pass covering Habitify, Streaks, Done, and Way of Life.
 - `step-02c2-behaviour-change-habit-apps-2026-06-07.md` - Behaviour-change habit app pass covering Fabulous, Productive, Habitica, and coaching-style habit products.
 - `step-03-mvp-roadmap-2026-06-07.md` - MVP wedge, phased roadmap, what not to build first, validation tests, and success metrics.
+- `step-04-monetization-ai-food-questions-2026-06-07.md` - Monetization, AI food logging economics, food database/product flows, and final questions.
 
 ## Still To Add
 
-- Step 4: Monetization, AI food logging, and questions.
 - Final merged product discovery summary and plan.
