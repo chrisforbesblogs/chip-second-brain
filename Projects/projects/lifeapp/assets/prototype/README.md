@@ -9,7 +9,9 @@ Standalone, dependency-free HTML prototype for the Life App MVP.
 
 ## V2 flow
 
-The prototype now follows the updated 9-screen onboarding formula:
+The prototype now follows the updated 9-core-section onboarding formula. In the UI, those sections can be expanded into a longer micro-screen flow when that improves clarity and pacing.
+
+Core sections:
 
 1. Welcome
 2. Goals

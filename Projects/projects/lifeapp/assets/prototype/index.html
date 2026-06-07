@@ -102,7 +102,7 @@
     </section>
 
     <section class="screen" data-screen="premium-preview">
-      <div class="card"><div class="split"><h2>Premium preview</h2><span class="kbd">9/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div><p class="small" style="margin:10px 0 12px">Simulated pricing for testing. Continue free is always visible.</p><div class="stack"><div class="choice"><div class="split"><b>Free</b><span class="badge">GBP0 / $0</span></div><div class="small">Core Today, basic recommendations, manual logging, and weekly review.</div></div><div class="choice active"><div class="split"><b>Premium Monthly</b><span class="badge blue">GBP9.99 / $12.99</span></div><div class="small">Deeper wearable explanations, adaptive targets, and less logging friction.</div></div><div class="choice active"><div class="split"><b>Premium Annual</b><span class="badge good">GBP69.99 / $89.99 · Best value</span></div><div class="small">Best value for richer guidance and fewer limits.</div></div><div class="choice"><div class="split"><b>Coach Later</b><span class="badge amber">From GBP29.99 / $39.99</span></div><div class="small">Coming later.</div></div></div><div style="height:12px"></div><button class="btn" id="continueFree">Continue free</button></div>
+      <div class="card"><div class="split"><h2>Premium preview</h2><span class="kbd">9/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div><p class="small" style="margin:10px 0 12px">Simulated pricing for testing. Continue free is always visible.</p><div class="stack"><div class="choice"><div class="split"><b>Free</b><span class="badge">GBP0 / $0</span></div><div class="small">Core Today, basic recommendations, manual logging, and weekly review.</div></div><div class="choice active"><div class="split"><b>Premium Monthly</b><span class="badge blue">GBP9.99 / $12.99</span></div><div class="small">Deeper wearable explanations, adaptive targets, and less logging friction.</div></div><div class="choice active"><div class="split"><b>Premium Annual</b><span class="badge good">GBP69.99 / $89.99 · Best value</span></div><div class="small">Best value for richer guidance and fewer limits.</div></div><div class="choice"><div class="split"><b>Coach Later</b><span class="badge amber">From GBP29.99 / $39.99</span></div><div class="small">Coming later.</div></div></div><div style="height:12px"></div><button class="btn continue-free">Continue free</button></div>
     </section>
 
     <section class="screen" data-screen="today">
@@ -163,7 +163,7 @@
           <div class="choice"><div class="split"><b>Coach Later</b><span class="badge amber">From GBP29.99 / $39.99</span></div><div class="small">Coming later.</div></div>
         </div>
         <div style="height:12px"></div>
-        <button class="btn" id="continueFree">Continue free</button>
+        <button class="btn continue-free">Continue free</button>
       </div>
     </div>
   </div>
@@ -284,7 +284,9 @@
     });
     document.getElementById('profileButton').addEventListener('click', () => show('profile'));
     document.getElementById('closePaywall').addEventListener('click', () => document.getElementById('paywallBackdrop').classList.remove('show'));
-    document.getElementById('continueFree').addEventListener('click', () => { document.getElementById('paywallBackdrop').classList.remove('show'); show('today'); });
+    document.querySelectorAll('.continue-free').forEach(button => {
+      button.addEventListener('click', () => { document.getElementById('paywallBackdrop').classList.remove('show'); show('today'); });
+    });
     updateToday();
     show('welcome');
   </script>
