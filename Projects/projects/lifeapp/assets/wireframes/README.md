@@ -17,3 +17,4 @@ Files:
 - `mock-today-dashboard.png` - polished Today screen mock image.
 - `mock-training-workouts.png` - polished Training screen mock image.
 - `generate_life_app_wireframes.py` - generator for the saved visual assets.
+- `color-schemes/` - visual palette/vibe options for the app.
