@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="1260" viewBox="0 0 1260 1260">
+<rect width="1260" height="1260" fill="#eef2ed"/>
+<text x="48" y="70" font-size="32" font-weight="700" fill="#17201a">Life App MVP Wireframes</text>
+<text x="48" y="104" font-size="16" font-weight="400" fill="#667066">Working title. Garmin-compatible MVP. Profile lives top right, like Garmin Connect.</text>
+<rect x="48" y="140" width="350" height="500" rx="34" fill="#101713" stroke="#101713"/>
+<rect x="60" y="152" width="326" height="476" rx="28" fill="#ffffff" stroke="#ffffff"/>
+<text x="80" y="192" font-size="22" font-weight="700" fill="#17201a">Today</text>
+<circle cx="354" cy="184" r="18" fill="#d8f2e5"/>
+<text x="348" y="190" font-size="16" font-weight="700" fill="#1f9d5a">P</text>
+<rect x="80" y="228" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="254" r="6" fill="#1f9d5a"/>
+<text x="122" y="260" font-size="14" font-weight="400" fill="#17201a">Readiness score</text>
+<rect x="80" y="294" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="320" r="6" fill="#1f9d5a"/>
+<text x="122" y="326" font-size="14" font-weight="400" fill="#17201a">Key Garmin signals</text>
+<rect x="80" y="360" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="386" r="6" fill="#1f9d5a"/>
+<text x="122" y="392" font-size="14" font-weight="400" fill="#17201a">Today&#x27;s actions</text>
+<rect x="80" y="426" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="452" r="6" fill="#1f9d5a"/>
+<text x="122" y="458" font-size="14" font-weight="400" fill="#17201a">Garmin sync state</text>
+<rect x="80" y="568" width="286" height="42" rx="21" fill="#f8faf8" stroke="#e4eae3"/>
+<text x="104" y="594" font-size="12" font-weight="400" fill="#667066">Today   Calendar   Training   Nutrition   Habits</text>
+<rect x="453" y="140" width="350" height="500" rx="34" fill="#101713" stroke="#101713"/>
+<rect x="465" y="152" width="326" height="476" rx="28" fill="#ffffff" stroke="#ffffff"/>
+<text x="485" y="192" font-size="22" font-weight="700" fill="#17201a">Calendar</text>
+<circle cx="759" cy="184" r="18" fill="#d8f2e5"/>
+<text x="753" y="190" font-size="16" font-weight="700" fill="#1f9d5a">P</text>
+<rect x="485" y="228" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="254" r="6" fill="#1f9d5a"/>
+<text x="527" y="260" font-size="14" font-weight="400" fill="#17201a">Week strip</text>
+<rect x="485" y="294" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="320" r="6" fill="#1f9d5a"/>
+<text x="527" y="326" font-size="14" font-weight="400" fill="#17201a">Today plan</text>
+<rect x="485" y="360" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="386" r="6" fill="#1f9d5a"/>
+<text x="527" y="392" font-size="14" font-weight="400" fill="#17201a">Upcoming training</text>
+<rect x="485" y="426" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="452" r="6" fill="#1f9d5a"/>
+<text x="527" y="458" font-size="14" font-weight="400" fill="#17201a">Habit/nutrition markers</text>
+<rect x="485" y="568" width="286" height="42" rx="21" fill="#f8faf8" stroke="#e4eae3"/>
+<text x="509" y="594" font-size="12" font-weight="400" fill="#667066">Today   Calendar   Training   Nutrition   Habits</text>
+<rect x="858" y="140" width="350" height="500" rx="34" fill="#101713" stroke="#101713"/>
+<rect x="870" y="152" width="326" height="476" rx="28" fill="#ffffff" stroke="#ffffff"/>
+<text x="890" y="192" font-size="22" font-weight="700" fill="#17201a">Training</text>
+<circle cx="1164" cy="184" r="18" fill="#d8f2e5"/>
+<text x="1158" y="190" font-size="16" font-weight="700" fill="#1f9d5a">P</text>
+<rect x="890" y="228" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="254" r="6" fill="#1f9d5a"/>
+<text x="932" y="260" font-size="14" font-weight="400" fill="#17201a">Tabs: Today / Workouts</text>
+<rect x="890" y="294" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="320" r="6" fill="#1f9d5a"/>
+<text x="932" y="326" font-size="14" font-weight="400" fill="#17201a">Recommended workout</text>
+<rect x="890" y="360" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="386" r="6" fill="#1f9d5a"/>
+<text x="932" y="392" font-size="14" font-weight="400" fill="#17201a">Garmin load/HRV</text>
+<rect x="890" y="426" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="452" r="6" fill="#1f9d5a"/>
+<text x="932" y="458" font-size="14" font-weight="400" fill="#17201a">Workout history</text>
+<rect x="890" y="568" width="286" height="42" rx="21" fill="#f8faf8" stroke="#e4eae3"/>
+<text x="914" y="594" font-size="12" font-weight="400" fill="#667066">Today   Calendar   Training   Nutrition   Habits</text>
+<rect x="48" y="680" width="350" height="500" rx="34" fill="#101713" stroke="#101713"/>
+<rect x="60" y="692" width="326" height="476" rx="28" fill="#ffffff" stroke="#ffffff"/>
+<text x="80" y="732" font-size="22" font-weight="700" fill="#17201a">Nutrition</text>
+<circle cx="354" cy="724" r="18" fill="#d8f2e5"/>
+<text x="348" y="730" font-size="16" font-weight="700" fill="#1f9d5a">P</text>
+<rect x="80" y="768" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="794" r="6" fill="#1f9d5a"/>
+<text x="122" y="800" font-size="14" font-weight="400" fill="#17201a">Calories and macros</text>
+<rect x="80" y="834" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="860" r="6" fill="#1f9d5a"/>
+<text x="122" y="866" font-size="14" font-weight="400" fill="#17201a">Protein gap insight</text>
+<rect x="80" y="900" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="926" r="6" fill="#1f9d5a"/>
+<text x="122" y="932" font-size="14" font-weight="400" fill="#17201a">Quick add meal/snack</text>
+<rect x="80" y="966" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="102" cy="992" r="6" fill="#1f9d5a"/>
+<text x="122" y="998" font-size="14" font-weight="400" fill="#17201a">Training fuel context</text>
+<rect x="80" y="1108" width="286" height="42" rx="21" fill="#f8faf8" stroke="#e4eae3"/>
+<text x="104" y="1134" font-size="12" font-weight="400" fill="#667066">Today   Calendar   Training   Nutrition   Habits</text>
+<rect x="453" y="680" width="350" height="500" rx="34" fill="#101713" stroke="#101713"/>
+<rect x="465" y="692" width="326" height="476" rx="28" fill="#ffffff" stroke="#ffffff"/>
+<text x="485" y="732" font-size="22" font-weight="700" fill="#17201a">Habits</text>
+<circle cx="759" cy="724" r="18" fill="#d8f2e5"/>
+<text x="753" y="730" font-size="16" font-weight="700" fill="#1f9d5a">P</text>
+<rect x="485" y="768" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="794" r="6" fill="#1f9d5a"/>
+<text x="527" y="800" font-size="14" font-weight="400" fill="#17201a">Daily checklist</text>
+<rect x="485" y="834" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="860" r="6" fill="#1f9d5a"/>
+<text x="527" y="866" font-size="14" font-weight="400" fill="#17201a">Streaks</text>
+<rect x="485" y="900" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="926" r="6" fill="#1f9d5a"/>
+<text x="527" y="932" font-size="14" font-weight="400" fill="#17201a">Garmin step goal</text>
+<rect x="485" y="966" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="507" cy="992" r="6" fill="#1f9d5a"/>
+<text x="527" y="998" font-size="14" font-weight="400" fill="#17201a">Sleep routine</text>
+<rect x="485" y="1108" width="286" height="42" rx="21" fill="#f8faf8" stroke="#e4eae3"/>
+<text x="509" y="1134" font-size="12" font-weight="400" fill="#667066">Today   Calendar   Training   Nutrition   Habits</text>
+<rect x="858" y="680" width="350" height="500" rx="34" fill="#101713" stroke="#101713"/>
+<rect x="870" y="692" width="326" height="476" rx="28" fill="#ffffff" stroke="#ffffff"/>
+<text x="890" y="732" font-size="22" font-weight="700" fill="#17201a">Profile</text>
+<circle cx="1164" cy="724" r="18" fill="#d8f2e5"/>
+<text x="1158" y="730" font-size="16" font-weight="700" fill="#1f9d5a">P</text>
+<rect x="890" y="768" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="794" r="6" fill="#1f9d5a"/>
+<text x="932" y="800" font-size="14" font-weight="400" fill="#17201a">Profile top right</text>
+<rect x="890" y="834" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="860" r="6" fill="#1f9d5a"/>
+<text x="932" y="866" font-size="14" font-weight="400" fill="#17201a">Connected apps</text>
+<rect x="890" y="900" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="926" r="6" fill="#1f9d5a"/>
+<text x="932" y="932" font-size="14" font-weight="400" fill="#17201a">Goals</text>
+<rect x="890" y="966" width="286" height="52" rx="16" fill="#f5f8f5" stroke="#e5ebe4"/>
+<circle cx="912" cy="992" r="6" fill="#1f9d5a"/>
+<text x="932" y="998" font-size="14" font-weight="400" fill="#17201a">Simple / Performance mode</text>
+<rect x="890" y="1108" width="286" height="42" rx="21" fill="#f8faf8" stroke="#e4eae3"/>
+<text x="914" y="1134" font-size="12" font-weight="400" fill="#667066">Today   Calendar   Training   Nutrition   Habits</text>
+</svg>
