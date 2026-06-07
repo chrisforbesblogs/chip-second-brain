@@ -3,7 +3,7 @@
 ## Channels
 
 - Discord: `#project-lifeapp` (`channel:1513145157980127282`)
-- Telegram: `https://t.me/+0AuiFSowYh1hYTM0`
+- Telegram: `g-project-lifeapp` (`telegram:-5296612153`), invite `https://t.me/+0AuiFSowYh1hYTM0`
 
 ## Repositories
 

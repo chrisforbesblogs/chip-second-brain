@@ -3,7 +3,6 @@
 ## Immediate
 
 - Confirm the core LifeApp idea in one or two sentences.
-- Capture the Telegram group name/link.
 - Confirm the three collaborators in the Telegram group.
 - Decide whether a future source-code repo is needed now or after product discovery.
 
