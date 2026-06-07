@@ -14,9 +14,9 @@ LifeApp is a new project started from the `#project-lifeapp` Discord channel on 
 
 ## Status
 
-- Stage: Intake
-- Current focus: Capture the initial idea, collaborators, source-of-truth channels, and project brief before creating source code.
-- Next milestone: Produce a clear product brief and initial scope for LifeApp.
+- Stage: Product discovery complete
+- Current focus: Review the final product discovery summary with Charley, choose the first target user, and lock the v1 wedge before any architecture or engineering work.
+- Next milestone: Convert the approved discovery summary into a PRD.
 
 ## Key Links
 

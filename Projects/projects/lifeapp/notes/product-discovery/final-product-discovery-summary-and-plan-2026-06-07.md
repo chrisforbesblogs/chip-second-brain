@@ -1,7 +1,7 @@
 # LifeApp Final Product Discovery Summary And Plan
 
 Date: 2026-06-07  
-Status: Final merged discovery pass  
+Status: Final merged discovery pass, reviewed and refined by ChipThink  
 Owner: ChipThink / ChipBoss handoff  
 Source: Charley Forbes Telegram voice note and LifeApp product-discovery notes
 
@@ -250,11 +250,36 @@ The product should monetize around convenience, personalization, insight, and co
 
 Potential tiers:
 
-- **Free:** daily dashboard, basic habits, basic nutrition/water tracking, ads, limited AI scans.
-- **Premium:** no ads, more AI scans, better integrations, deeper analytics, weekly review, advanced habit plans.
+- **Free:** daily dashboard, basic habits, basic nutrition/water tracking, manual/quick-add logging, limited saved meals, weekly review, and a small AI scan trial or allowance if the economics work.
+- **Ad-supported free experiment:** only test ads in low-sensitivity surfaces. Avoid intrusive ads during food logging, recovery guidance, habit check-ins, or onboarding, and avoid ads that conflict with health goals.
+- **Premium:** ad-free experience, more AI scans, better integrations, unlimited or expanded saved meals, deeper insights, richer weekly review, advanced habit plans, and convenience features.
 - **Coach/Pro:** AI trainer personas, eight-week programmes, adaptive training/nutrition plans, deeper onboarding.
 
 Avoid making basic tracking useless in the free tier. The free version needs to build trust and daily habit before upsell.
+
+Ads should be treated as a secondary test, not the foundation of the business. LifeApp is handling health, food, body goals, recovery, and habit data, so trust matters more than squeezing revenue from every free session.
+
+## Validation Plan And Success Metrics
+
+Before engineering scope is locked, validate that users actually want the daily operating layer rather than another specialist tracker.
+
+Recommended tests:
+
+1. **Problem interviews:** speak to 15-25 users who already use two or more fitness, wearable, nutrition, or habit apps. Validate app-switching pain, current spend, and what they wish one dashboard would answer.
+2. **Clickable prototype:** test onboarding, daily dashboard, nutrition logging, habit setup, and weekly review with 5-10 target users.
+3. **Seven-day diary beta:** ask users to follow the proposed daily loop for one week and track whether it reduces app switching.
+4. **Habit design test:** confirm users can create a useful health habit with cue, time/place, smallest version, partial completion, and skip reason.
+5. **Monetisation test:** compare willingness to pay for AI scans, barcode/database convenience, ad-free use, advanced insights, and coaching.
+
+Early success metrics:
+
+- Activation: onboarding completed, first habit created, first food/water action logged, and daily dashboard checked.
+- Week-one engagement: dashboard opened on four or more days.
+- Nutrition engagement: food, protein, macro, or water logging on three or more days.
+- Habit engagement: five or more habit check-ins in week one, including partial or skipped entries.
+- Weekly review: first weekly review completed.
+- Perceived value: 60%+ of beta users say LifeApp helps them know what to do today.
+- Product-market-fit signal: 40%+ of active beta users say they would be very disappointed if LifeApp went away.
 
 ## Open Questions For Charley
 
@@ -273,10 +298,11 @@ Avoid making basic tracking useless in the free tier. The free version needs to 
 
 1. Pick the first target user segment.
 2. Choose the v1 wedge: daily health dashboard + basic nutrition + habit builder.
-3. Create rough wireframes for onboarding, daily dashboard, food logging, habit builder, and weekly review.
-4. Validate with 5-10 target users before engineering.
-5. Convert the approved discovery summary into a PRD.
-6. Hand the PRD to architecture/engineering only after the v1 scope is locked.
+3. Decide which first data source matters most for the prototype: manual input, Apple Health, Garmin, Strava, WHOOP, Wahoo, or another source.
+4. Create rough wireframes for onboarding, daily dashboard, food logging, habit builder, and weekly review.
+5. Validate with 5-10 target users before engineering.
+6. Convert the approved discovery summary into a PRD.
+7. Hand the PRD to architecture/engineering only after the v1 scope is locked.
 
 ## Key Product Decision
 
@@ -285,4 +311,3 @@ LifeApp should not begin as “everything Garmin + MyFitnessPal + Strava + Atomi
 The first build should prove this daily loop:
 
 > wake up, see today’s body state, know what to do, log the basics, complete one habit, review weekly, improve.
-

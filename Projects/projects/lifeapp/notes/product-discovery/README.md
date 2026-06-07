@@ -17,3 +17,4 @@ This folder contains the LifeApp discovery work that should be visible under the
 ## Status
 
 - Final merge complete.
+- ChipThink review/refinement complete: monetization wording tightened, validation metrics added, and project README status updated.
