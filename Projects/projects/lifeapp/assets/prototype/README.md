@@ -56,7 +56,7 @@ After onboarding, the main app uses the v2 bottom navigation:
 - Calendar
 - Log
 
-Profile / Settings stays top-right and holds theme controls. Theme selection is not shown in onboarding or on the main dashboard.
+There is no visible Profile button in this prototype pass. Theme selection is not shown in onboarding or on the main dashboard.
 
 ## What changed in v2.1
 
@@ -74,7 +74,7 @@ Profile / Settings stays top-right and holds theme controls. Theme selection is 
 ## State and interactions
 
 - Onboarding selections update the prototype state.
-- State affects Today, Training, Nutrition, Calendar, Log, and Profile copy.
+- State affects Today, Training, Nutrition, Calendar, and Log copy.
 - Data state labels include synced, simulated, manual, and missing-style wording where relevant.
 - The main prototype defaults to the dark-first v2 palette.
 
@@ -96,7 +96,7 @@ Profile / Settings stays top-right and holds theme controls. Theme selection is 
 - Confirm Continue free works and closes the paywall.
 - Check that no string-literal or apostrophe syntax issue has been introduced.
 - Confirm the chosen experience level changes dashboard density and Today copy.
-- Confirm profile/theme controls stay out of onboarding and the main dashboard.
+- Confirm no Profile button appears in onboarding or the main dashboard.
 - Open in a browser and step through the flow once before shipping.
 
 ## Notes
