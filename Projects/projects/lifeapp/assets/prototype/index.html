@@ -3,200 +3,164 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Life App Prototype</title>
+  <title>Life App Prototype v2</title>
   <style>
     :root {
-      --bg: #f4f7fb;
-      --surface: rgba(255,255,255,.86);
-      --surface-strong: #ffffff;
-      --text: #102033;
-      --muted: #5e6b7f;
-      --line: rgba(16,32,51,.10);
-      --accent: #b7ff5b;
-      --accent-2: #43c6ff;
-      --good: #17c964;
-      --warn: #f5a524;
-      --bad: #f31260;
-      --shadow: 0 18px 50px rgba(22, 34, 55, .10);
+      --bg: #080C0D;
+      --surface: #121819;
+      --surface-2: #1A2224;
+      --text: #F4F7F2;
+      --muted: #9AA7A2;
+      --line: rgba(244,247,242,.08);
+      --green: #4DDF87;
+      --blue: #5E9CFF;
+      --amber: #F2B84B;
+      --cyan: #43C7D9;
+      --red: #FF6B5F;
+      --shadow: 0 18px 50px rgba(0,0,0,.38);
       --radius: 22px;
-      --nav: rgba(255,255,255,.92);
+      --nav: rgba(8,12,13,.94);
     }
-    [data-theme="dark"] {
-      --bg: #081018;
-      --surface: rgba(15, 24, 34, .90);
-      --surface-strong: #111b27;
-      --text: #eff4fb;
-      --muted: #9badc5;
-      --line: rgba(255,255,255,.08);
-      --accent: #bbff4a;
-      --accent-2: #71d9ff;
-      --good: #a8ff5a;
-      --warn: #ffd166;
-      --bad: #ff5c8a;
-      --shadow: 0 24px 70px rgba(0,0,0,.38);
-      --nav: rgba(10,16,24,.92);
-    }
-    *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(circle at top, rgba(183,255,91,.10), transparent 28%),var(--bg);color:var(--text)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(circle at top, rgba(77,223,135,.10), transparent 28%),var(--bg);color:var(--text)}
     .app{max-width:430px;min-height:100vh;margin:0 auto;display:flex;flex-direction:column;padding-bottom:92px}
-    .topbar,.screen,.nav,.chip,.card,.metric,.btn,.tab{backdrop-filter:blur(18px)}
+    .topbar,.screen,.nav,.card,.metric,.btn,.choice,.tab,.source,.data-chip{backdrop-filter:blur(18px)}
     .topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 16px 10px}
     .brand{font-weight:700;letter-spacing:.2px}.ghost{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 12px;border-radius:999px}
     .screen{display:none;padding:8px 16px 24px;animation:fade .2s ease}.screen.active{display:block}.hero{padding:8px 0 14px}
-    h1,h2,h3,p{margin:0}.eyebrow{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}.title{font-size:2rem;line-height:1.02;margin-bottom:10px}.sub{color:var(--muted);line-height:1.5}
+    h1,h2,h3,p{margin:0}.eyebrow{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}.title{font-size:1.95rem;line-height:1.03;margin-bottom:10px}.sub{color:var(--muted);line-height:1.5}
     .card{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius);padding:16px;margin:12px 0}
-    .score{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center}.ring{width:92px;height:92px;border-radius:50%;background:conic-gradient(var(--accent) 0 74%, rgba(255,255,255,.08) 74% 100%);display:grid;place-items:center;position:relative}.ring:before{content:"";position:absolute;inset:10px;background:var(--surface-strong);border-radius:50%}.ring span{position:relative;font-size:1.45rem;font-weight:800}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 10px;font-size:.82rem;font-weight:700;background:rgba(183,255,91,.14);color:var(--text)}
-    .row{display:flex;gap:10px;flex-wrap:wrap}.metric{flex:1 1 43%;min-width:0;background:var(--surface-strong);border:1px solid var(--line);border-radius:18px;padding:12px}.metric b{display:block;font-size:1rem}.metric small,.small{color:var(--muted)}
-    .btn,.tab,.nav button{cursor:pointer;border:0}.btn{width:100%;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,var(--accent),#e9ffb4);color:#102033;font-weight:800}.btn.secondary{background:var(--surface-strong);color:var(--text);border:1px solid var(--line)}.btn.small{width:auto;padding:10px 12px;border-radius:999px;font-size:.86rem}
-    .stack{display:grid;gap:10px}.choice{padding:14px;border-radius:18px;border:1px solid var(--line);background:var(--surface-strong)}.choice.active{outline:2px solid var(--accent)}
-    .tabs{display:flex;gap:8px;margin:8px 0 14px}.tab{flex:1;padding:11px 12px;border-radius:999px;background:transparent;color:var(--muted);border:1px solid var(--line)}.tab.active{background:var(--surface-strong);color:var(--text);font-weight:700}
-    .nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(430px,calc(100% - 14px));display:flex;justify-content:space-between;padding:10px;background:var(--nav);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.nav.hidden{display:none}.nav button{flex:1;background:transparent;color:var(--muted);padding:10px 6px;border-radius:14px}.nav button.active{color:var(--text);background:rgba(183,255,91,.12)}
-    .mini{font-size:.82rem;color:var(--muted)} .split{display:flex;justify-content:space-between;gap:10px;align-items:center}.kbd{font-size:.76rem;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted)}
-    .progress{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}.dot{flex:1;height:6px;border-radius:999px;background:var(--line)}.dot.active{background:var(--accent)}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface-strong);font-size:.78rem;color:var(--muted)}.badge.good{background:rgba(23,201,100,.12);color:var(--text)}
-    .split-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.option,.source{padding:12px;border:1px solid var(--line);border-radius:16px;background:var(--surface-strong)}.option.active,.source.active{outline:2px solid var(--accent)}
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.42);display:none;align-items:flex-end;justify-content:center;z-index:30;padding:12px}.modal-backdrop.show{display:flex}.modal{width:min(430px,100%);background:var(--bg);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:16px}.modal-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+    .score{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center}.ring{width:92px;height:92px;border-radius:50%;background:conic-gradient(var(--green) 0 74%, rgba(255,255,255,.08) 74% 100%);display:grid;place-items:center;position:relative}.ring:before{content:"";position:absolute;inset:10px;background:var(--surface-2);border-radius:50%}.ring span{position:relative;font-size:1.45rem;font-weight:800}
+    .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 10px;font-size:.82rem;font-weight:700;background:rgba(77,223,135,.14);color:var(--text)}
+    .row{display:flex;gap:10px;flex-wrap:wrap}.metric{flex:1 1 43%;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:18px;padding:12px}.metric b{display:block;font-size:1rem}.metric small,.small{color:var(--muted)}
+    .btn,.tab,.nav button{cursor:pointer;border:0}.btn{width:100%;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,var(--green),#90F1AF);color:#08100b;font-weight:800}.btn.secondary{background:var(--surface-2);color:var(--text);border:1px solid var(--line)}.btn.small{width:auto;padding:10px 12px;border-radius:999px;font-size:.86rem}
+    .stack{display:grid;gap:10px}.choice,.source{padding:14px;border-radius:18px;border:1px solid var(--line);background:var(--surface-2)}.choice.active,.source.active{outline:2px solid var(--green)}
+    .tabs{display:flex;gap:8px;margin:8px 0 14px}.tab{flex:1;padding:11px 12px;border-radius:999px;background:transparent;color:var(--muted);border:1px solid var(--line)}.tab.active{background:var(--surface-2);color:var(--text);font-weight:700}
+    .nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(430px,calc(100% - 14px));display:flex;justify-content:space-between;padding:10px;background:var(--nav);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.nav.hidden{display:none}.nav button{flex:1;background:transparent;color:var(--muted);padding:10px 6px;border-radius:14px}.nav button.active{color:var(--text);background:rgba(77,223,135,.12)}
+    .kbd{font-size:.76rem;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted)}.progress{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}.dot{flex:1;height:6px;border-radius:999px;background:var(--line)}.dot.active{background:var(--green)}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);font-size:.78rem;color:var(--muted)}.badge.good{background:rgba(77,223,135,.14);color:var(--text)}.badge.blue{background:rgba(94,156,255,.14);color:var(--text)}.badge.amber{background:rgba(242,184,75,.14);color:var(--text)}.badge.cyan{background:rgba(67,199,217,.14);color:var(--text)}.badge.red{background:rgba(255,107,95,.14);color:var(--text)}
+    .split{display:flex;justify-content:space-between;gap:10px;align-items:center}.split-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.option{padding:12px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}.option.active{outline:2px solid var(--green)}
+    .toggle-row{display:flex;gap:8px;flex-wrap:wrap}.toggle{padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--text)}.toggle.active{outline:2px solid var(--green)}
+    .data-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:.75rem;color:var(--muted)}
+    .timeline{display:grid;gap:10px}.bar{height:10px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}.fill{height:100%;border-radius:inherit;background:var(--green)}.fill.blue{background:var(--blue)}.fill.amber{background:var(--amber)}.fill.cyan{background:var(--cyan)}
+    .meal{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-top:1px solid var(--line)}.meal:first-child{border-top:0;padding-top:0}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.42);display:none;align-items:flex-end;justify-content:center;z-index:30;padding:12px}.modal-backdrop.show{display:flex}.modal{width:min(430px,100%);background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:16px}.modal-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+    .muted-note{color:var(--muted);font-size:.82rem;line-height:1.45}.section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
     @keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
-<body data-theme="dark">
+<body>
   <div class="app">
     <div class="topbar">
       <div class="brand">Life App</div>
-      <button class="ghost" id="themeToggle">Dark</button>
+      <button class="ghost" id="profileButton">Profile</button>
     </div>
 
-    <section class="screen active" data-screen="onboarding">
+    <section class="screen active" data-screen="welcome">
       <div class="hero">
         <div class="eyebrow">Daily health command centre</div>
-        <div class="title">One clear health plan for today.</div>
-        <p class="sub">Bring training, recovery, nutrition, hydration, and habits into one calm daily view.</p>
+        <div class="title">Your health data, turned into useful guidance.</div>
+        <p class="sub">Connect training, recovery, nutrition, and logs so Life App can show what matters and what to do next.</p>
       </div>
       <div class="card">
-        <div class="split"><h3>Welcome</h3><span class="kbd">1/7</span></div>
-        <div class="progress"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <p class="small">Your health apps collect the data. Life App turns it into today's plan.</p>
+        <div class="split"><h3>Welcome</h3><span class="kbd">1/9</span></div>
+        <div class="progress"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <p class="small">Preview the plan with demo data or start setup with your own signals.</p>
         <div style="height:12px"></div>
-        <div class="stack"><div class="choice active"><b>Start setup</b><div class="small">Build your daily plan now.</div></div><div class="choice"><b>Preview with demo data</b><div class="small">See the flow before connecting anything.</div></div></div>
+        <div class="stack"><div class="choice active"><b>Start setup</b><div class="small">Build your plan and keep it synced.</div></div><div class="choice"><b>Preview with demo data</b><div class="small">See the flow before connecting anything.</div></div></div>
         <div style="height:12px"></div><button class="btn" data-go="goals">Start setup</button>
       </div>
     </section>
 
     <section class="screen" data-screen="goals">
-      <div class="card"><div class="split"><h2>Goals</h2><span class="kbd">2/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Pick the outcomes you want Life App to keep you honest about.</p><div class="stack"><div class="choice active" data-goal="Improve endurance"><b>Improve endurance</b><div class="small">Train smarter and recover well.</div></div><div class="choice" data-goal="Build fitness"><b>Build fitness</b><div class="small">Show up consistently and keep moving.</div></div><div class="choice active" data-goal="Improve protein"><b>Improve protein</b><div class="small">Keep nutrition simple and visible.</div></div><div class="choice active" data-goal="Recover better"><b>Recover better</b><div class="small">Sleep more, manage load, stay steady.</div></div></div><div style="height:12px"></div><button class="btn" data-go="training-context">Continue</button></div>
+      <div class="card"><div class="split"><h2>Goals</h2><span class="kbd">2/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Pick 1-2 outcomes for Life App to optimise around.</p><div class="stack"><div class="choice active" data-goal="Train smarter"><b>Train smarter</b><div class="small">Better session choices and recovery-aware guidance.</div></div><div class="choice" data-goal="Improve body composition"><b>Improve body composition</b><div class="small">Track the balance between fuel, load, and body trend.</div></div><div class="choice active" data-goal="Recover better"><b>Recover better</b><div class="small">Sleep, readiness, and load made easier to act on.</div></div><div class="choice" data-goal="Build consistency"><b>Build consistency</b><div class="small">Simple daily actions that keep you moving.</div></div></div><div style="height:12px"></div><button class="btn" data-go="training">Continue</button></div>
     </section>
 
-    <section class="screen" data-screen="training-context">
-      <div class="card"><div class="split"><h2>Training context</h2><span class="kbd">3/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Tell us how you train so today's advice fits your week.</p><div class="split-2"><div class="choice active"><b>4-5 days/week</b><div class="small">Regular training rhythm.</div></div><div class="choice"><b>6+ days/week</b><div class="small">High-volume athlete mode.</div></div></div><div style="height:10px"></div><div class="stack"><div class="choice active"><b>Garmin-led training</b><div class="small">Use wearable signals to guide the day.</div></div><div class="choice"><b>Self-led training</b><div class="small">Simple plan with manual check-ins.</div></div><div class="choice"><b>Coach or app plan</b><div class="small">Follow an existing plan and adapt around it.</div></div></div><div style="height:12px"></div><button class="btn" data-go="nutrition-hydration">Continue</button></div>
+    <section class="screen" data-screen="training-baseline">
+      <div class="card"><div class="split"><h2>Training baseline</h2><span class="kbd">3/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">What does your week look like right now?</p><div class="split-2"><div class="choice active" data-frequency="3-5 days/week"><b>3-5 days/week</b><div class="small">Balanced rhythm.</div></div><div class="choice" data-frequency="6+ days/week"><b>6+ days/week</b><div class="small">High training load.</div></div></div><div style="height:10px"></div><div class="stack"><div class="choice active" data-training-type="strength"><b>Strength</b><div class="small">Gym-first and recovery-aware.</div></div><div class="choice" data-training-type="running/cardio"><b>Running/cardio</b><div class="small">Endurance and conditioning focused.</div></div><div class="choice" data-training-type="hybrid"><b>Hybrid</b><div class="small">A mix of lifting and endurance.</div></div><div class="choice" data-training-type="general fitness"><b>General fitness</b><div class="small">Keep it simple and sustainable.</div></div></div><div style="height:12px"></div><button class="btn" data-go="experience-level">Continue</button></div>
     </section>
 
-    <section class="screen" data-screen="nutrition-hydration">
-      <div class="card"><div class="split"><h2>Nutrition and hydration</h2><span class="kbd">4/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Choose how detailed you want food and water to feel.</p><div class="stack"><div class="choice active"><b>Quick add</b><div class="small">Meals, snacks, water, saved meals.</div></div><div class="choice"><b>Saved meals and recents</b><div class="small">Repeat the things you already eat.</div></div><div class="choice"><b>Lightweight estimates</b><div class="small">Low effort, enough to steer today.</div></div><div class="choice"><b>Tighter tracking</b><div class="small">Calories, protein, macros, and water visible.</div></div></div><div style="height:12px"></div><button class="btn" data-go="habits-setup">Continue</button></div>
+    <section class="screen" data-screen="experience-level">
+      <div class="card"><div class="split"><h2>Experience level</h2><span class="kbd">4/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">This controls dashboard density and coaching language.</p><div class="option-grid"><div class="option active" data-level="Beginner"><b>Beginner</b><div class="small">Cleaner, bigger cards, more explanation.</div></div><div class="option" data-level="Intermediate"><b>Intermediate</b><div class="small">Balanced signals and actions.</div></div><div class="option" data-level="Advanced"><b>Advanced</b><div class="small">Dense metrics and driver breakdowns.</div></div></div><div style="height:12px"></div><button class="btn" data-go="nutrition-baseline">Continue</button></div>
     </section>
 
-    <section class="screen" data-screen="habits-setup">
-      <div class="card"><div class="split"><h2>Habits</h2><span class="kbd">5/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Pick up to 3 starter habits for this week.</p><div class="stack"><div class="choice active"><b>Protein after waking</b><div class="small">Cue: coffee routine · Smallest version: 25g shake.</div></div><div class="choice"><b>8k steps</b><div class="small">Cue: lunch walk · Reminder: optional.</div></div><div class="choice"><b>Sleep before 11</b><div class="small">Cue: after dinner · Track done, partial, skipped.</div></div></div><div style="height:12px"></div><button class="btn" data-go="data-source">Continue</button></div>
+    <section class="screen" data-screen="nutrition-baseline">
+      <div class="card"><div class="split"><h2>Nutrition baseline</h2><span class="kbd">5/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">How should Life App help with food and hydration?</p><div class="stack"><div class="choice active" data-tracking="Quick targets"><b>Quick targets</b><div class="small">Simple daily targets with easy guidance.</div></div><div class="choice" data-tracking="Macro aware"><b>Macro aware</b><div class="small">Calories, protein, carbs, fat, water visible.</div></div><div class="choice" data-tracking="Detailed logging"><b>Detailed logging</b><div class="small">More precise tracking and history.</div></div></div><div style="height:10px"></div><div class="split-2"><div class="choice active" data-focus="Protein"><b>Protein</b><div class="small">Recover and support training.</div></div><div class="choice" data-focus="Calories/body weight"><b>Calories/body weight</b><div class="small">Track intake and trend together.</div></div><div class="choice" data-focus="Fuel training"><b>Fuel training</b><div class="small">Eat to match load and timing.</div></div><div class="choice" data-focus="Hydration"><b>Hydration</b><div class="small">Keep water visible and actionable.</div></div></div><div style="height:12px"></div><button class="btn" data-go="connect-data">Continue</button></div>
     </section>
 
-    <section class="screen" data-screen="data-source">
-      <div class="card"><div class="split"><h2>Data source</h2><span class="kbd">6/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Choose where Life App should read your health signals from.</p><div class="stack"><div class="source active" data-source="garmin"><b>Garmin</b><div class="small">Connect Garmin to turn sleep, HRV, training load, steps, and workouts into today's plan.</div></div><div class="source" data-source="other"><b>Other wearable/app</b><div class="small">Apple Health, Strava, WHOOP, Wahoo, or another tracker. Coming next; use manual or demo data today.</div></div><div class="source" data-source="manual"><b>No connection / manual entry</b><div class="small">Use a 3-touch daily check-in for sleep, body, and training.</div></div></div><div style="height:12px"></div><button class="btn" data-go="plan-preview">Continue</button></div>
+    <section class="screen" data-screen="connect-data">
+      <div class="card"><div class="split"><h2>Connect data</h2><span class="kbd">6/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Choose where your signals come from. Life App shows if data is synced, simulated, manual, or missing.</p><div class="stack"><div class="source active" data-source="garmin"><b>Garmin</b><div class="small">Recommended. Connect Garmin to turn sleep, HRV, training load, workouts, and steps into today's guidance.</div></div><div class="source" data-source="other"><b>Other wearable-app</b><div class="small">Apple Health, Strava, WHOOP, Wahoo, or another tracker. Use a manual or demo path if the link is not ready.</div></div><div class="source" data-source="manual"><b>Manual / demo</b><div class="small">Use quick check-ins or simulated data and still get useful guidance.</div></div></div><div style="height:12px"></div><div class="card" style="margin:0;padding:14px;background:var(--surface-2)"><div class="muted-note">You control connections and can disconnect anytime.</div><div class="muted-note" style="margin-top:6px">Life App uses health and training data for recommendations, not medical advice.</div><div class="muted-note" style="margin-top:6px">Your data is used for recommendations in Life App, not sold.</div></div><div style="height:12px"></div><button class="btn" data-go="plan-preview">Continue</button></div>
     </section>
 
     <section class="screen" data-screen="plan-preview">
-      <div class="card"><div class="split"><h2>Mode, theme, plan preview</h2><span class="kbd">7/7</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div><p class="small" style="margin:10px 0 12px">Choose how Life App should speak to you.</p><div class="split-2"><div class="choice active" data-mode="simple"><b>Simple</b><div class="small">Fewer metrics, direct actions.</div></div><div class="choice" data-mode="performance"><b>Performance</b><div class="small">More signals, compact athlete view.</div></div></div><div style="height:10px"></div><div class="split-2"><div class="choice active" data-theme-option="dark"><b>Dark</b><div class="small">Performance cockpit.</div></div><div class="choice" data-theme-option="light"><b>Light</b><div class="small">Clean daytime mode.</div></div></div><div style="height:10px"></div><div class="card" style="margin:12px 0 0;padding:14px;background:var(--surface-strong)"><div class="badge good">Ready to train</div><h3 style="margin:10px 0 8px">Today looks like a moderate day</h3><p class="small">Keep training easy, hit 140g protein, drink 3.2L water, and finish your mobility habit.</p><div style="height:12px"></div><button class="btn" data-go="today">See Today</button></div></div>
+      <div class="card"><div class="split"><h2>Plan preview</h2><span class="kbd">7/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">A quick look at how today will feel before you save it.</p><div class="card" style="margin:0;padding:14px;background:var(--surface-2)"><div class="badge good" id="previewPill">Ready to train</div><h3 style="margin:10px 0 8px" id="previewHeadline">Train easy today</h3><p class="small" id="previewCopy">Recovery is decent but not perfect, so keep the session moderate and hit your fuel targets.</p><div style="height:10px"></div><div class="row"><div class="data-chip" id="previewSource">Garmin synced</div><div class="data-chip">Hydration target 3.2L</div><div class="data-chip">Log prompt after training</div></div><div style="height:12px"></div><div class="muted-note" id="previewAdvanced">Advanced view also shows HRV, resting HR, load trend, and recovery drivers.</div></div><div style="height:12px"></div><button class="btn" data-go="save-plan">Save and continue</button></div>
+    </section>
+
+    <section class="screen" data-screen="save-plan">
+      <div class="card"><div class="split"><h2>Account setup / save plan</h2><span class="kbd">8/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div><p class="small" style="margin:10px 0 12px">Save this plan and keep your data synced.</p><div class="stack"><div class="choice active"><b>Continue with Apple</b><div class="small">Fastest path for iPhone users.</div></div><div class="choice"><b>Continue with Google</b><div class="small">Good cross-platform option.</div></div><div class="choice"><b>Continue with email</b><div class="small">Email sign-in or magic link.</div></div><div class="choice"><b>Continue with demo data</b><div class="small">Preview mode that still shows the full experience.</div></div></div><div style="height:12px"></div><div class="card" style="margin:0;padding:14px;background:var(--surface-2)"><div class="muted-note">You control connections and can disconnect anytime.</div><div class="muted-note" style="margin-top:6px">Life App uses health and training data for recommendations, not medical advice.</div><div class="muted-note" style="margin-top:6px">Your data is used for recommendations in Life App, not sold.</div></div><div style="height:12px"></div><button class="btn" data-go="premium-preview">Continue</button></div>
+    </section>
+
+    <section class="screen" data-screen="premium-preview">
+      <div class="card"><div class="split"><h2>Premium preview</h2><span class="kbd">9/9</span></div><div class="progress"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></div><p class="small" style="margin:10px 0 12px">Simulated pricing for testing. Continue free is always visible.</p><div class="stack"><div class="choice"><div class="split"><b>Free</b><span class="badge">GBP0 / $0</span></div><div class="small">Core Today, basic recommendations, manual logging, and weekly review.</div></div><div class="choice active"><div class="split"><b>Premium Monthly</b><span class="badge blue">GBP9.99 / $12.99</span></div><div class="small">Deeper wearable explanations, adaptive targets, and less logging friction.</div></div><div class="choice active"><div class="split"><b>Premium Annual</b><span class="badge good">GBP69.99 / $89.99 · Best value</span></div><div class="small">Best value for richer guidance and fewer limits.</div></div><div class="choice"><div class="split"><b>Coach Later</b><span class="badge amber">From GBP29.99 / $39.99</span></div><div class="small">Coming later.</div></div></div><div style="height:12px"></div><button class="btn" id="continueFree">Continue free</button></div>
     </section>
 
     <section class="screen" data-screen="today">
       <div class="card score">
-        <div class="ring"><span>74</span></div>
+        <div class="ring" id="todayRing"><span id="todayScore">74</span></div>
         <div>
           <div class="pill" id="todayStatePill">Ready to train</div>
           <h2 style="margin:10px 0 6px">Today</h2>
-          <div class="small" id="todayMeta">Sun 7 Jun · Garmin synced 8 min ago</div>
+          <div class="small" id="todayMeta">Garmin synced 8 min ago · Beginner mode</div>
           <div class="small" style="margin-top:10px" id="todaySignals">Sleep 7h 22m · HRV steady · Load moderate</div>
+          <div style="margin-top:10px" class="toggle-row" id="todayDataStates"><span class="data-chip">Synced</span><span class="data-chip">Readiness 74</span><span class="data-chip">Fueling: behind</span></div>
         </div>
       </div>
-      <div class="row">
-        <div class="metric"><small>Sleep</small><b id="sleepMetric">Good</b></div>
-        <div class="metric"><small>Recovery</small><b id="recoveryMetric">Stable</b></div>
-        <div class="metric"><small>Training load</small><b id="loadMetric">Moderate</b></div>
-        <div class="metric"><small>Hydration</small><b id="hydrationMetric">Behind</b></div>
-      </div>
-      <div class="card">
-        <h3>Today's actions</h3>
-        <div class="stack" style="margin-top:10px">
-          <div class="choice"><b id="trainingAction">Train easy</b><div class="small" id="trainingReason">35–45 min zone 2 or mobility. Keep intensity moderate.</div></div>
-          <div class="choice"><b id="proteinAction">Protein target</b><div class="small" id="proteinReason">140g today. Front-load breakfast.</div></div>
-          <div class="choice"><b id="waterAction">Water target</b><div class="small" id="waterReason">3.2L total. Add 500ml before training.</div></div>
-          <div class="choice"><b id="sleepAction">Sleep action</b><div class="small" id="sleepReason">Wind down 30 min earlier tonight.</div></div>
-        </div>
-      </div>
+      <div class="row" id="todayMetrics"></div>
+      <div class="card"><div class="section-label">Guidance</div><div class="stack"><div class="choice"><b id="trainingAction">Train easy</b><div class="small" id="trainingReason">35-45 min zone 2 or mobility. Keep intensity moderate.</div></div><div class="choice"><b id="nutritionAction">Nutrition</b><div class="small" id="nutritionReason">Hit 140g protein and keep carbs steady around training.</div></div><div class="choice"><b id="hydrationAction">Hydration</b><div class="small" id="hydrationReason">Aim for 3.2L total and add 500ml before training.</div></div><div class="choice"><b id="recoveryAction">Recovery</b><div class="small" id="recoveryReason">Wind down 30 min earlier tonight and keep tomorrow open if load climbs.</div></div></div></div>
+      <div class="card"><div class="section-label">What changed today</div><p class="small" id="todayInsight">Recovery is decent, but the previous load was still meaningful. Keep training smooth and eat like it matters.</p></div>
+    </section>
+
+    <section class="screen" data-screen="training">
+      <div class="card"><div class="split"><h2>Training</h2><span class="kbd">Today</span></div><div class="tabs"><button class="tab active">Today</button><button class="tab">Workouts</button></div><div class="choice active"><b id="trainingTitle">Recommended workout</b><div class="small" id="trainingSummary">Easy session · 35-45 min · moderate effort</div></div><div class="choice" style="margin-top:10px"><b>Why this?</b><div class="small" id="trainingWhy">Keep it manageable and consistent while the body settles in.</div></div></div>
+      <div class="card"><div class="section-label" id="trainingSignalsTitle">Garmin signals</div><p class="small" style="margin-top:8px" id="trainingSignalsText">Last workout: intervals 2 days ago · Training load: moderate · Recovery: stable · Sleep: 7h 22m.</p></div>
+      <div class="card"><div class="section-label">Recent sessions</div><p class="small" style="margin-top:8px" id="trainingHistory">Last 7 days: 3 workouts completed, 1 mobility session, 1 long run, 2 recovery days.</p></div>
+      <div class="card" id="trainingAdvancedCard"><div class="section-label">Advanced load view</div><div class="timeline"><div><div class="split"><span class="small">Acute / chronic load proxy</span><span class="small" id="loadProxy">0.86</span></div><div class="bar"><div class="fill blue" id="loadProxyFill" style="width:72%"></div></div></div><div><div class="split"><span class="small">Volume trend</span><span class="small" id="volumeTrend">Steady</span></div><div class="bar"><div class="fill" id="volumeTrendFill" style="width:66%"></div></div></div><div><div class="split"><span class="small">Fatigue notes</span><span class="small" id="fatigueNotes">Low</span></div><div class="bar"><div class="fill amber" id="fatigueFill" style="width:24%"></div></div></div></div></div>
+    </section>
+
+    <section class="screen" data-screen="nutrition">
+      <div class="card"><div class="split"><h2>Nutrition</h2><span class="kbd">Training day</span></div><div class="row" style="margin-top:12px" id="nutritionMetrics"></div></div>
+      <div class="card"><div class="section-label">Quick add</div><div class="row" style="margin-top:10px"><button class="btn small">Meal</button><button class="btn small secondary">Snack</button><button class="btn small secondary">Water</button><button class="btn small secondary">Saved meal</button></div></div>
+      <div class="card"><div class="section-label">Recent meals</div><div class="meal"><div><b>Breakfast bowl</b><div class="small">630 kcal · 42g protein</div></div><span class="data-chip">Recent</span></div><div class="meal"><div><b>Chicken rice box</b><div class="small">780 kcal · 48g protein</div></div><span class="data-chip">Saved</span></div><div class="meal"><div><b>Pre-workout banana + yogurt</b><div class="small">220 kcal · quick fuel</div></div><span class="data-chip">Quick add</span></div></div>
+      <div class="card"><div class="section-label">Insight</div><p class="small" id="nutritionInsight">Protein is slightly low for a training day. Eat a high-protein meal before the evening session.</p></div>
     </section>
 
     <section class="screen" data-screen="calendar">
       <div class="card">
         <div class="split"><h2>Calendar</h2><span class="kbd">Week view</span></div>
-        <div class="row" style="margin-top:12px">
-          <div class="metric"><small>Mon</small><b>Lift</b></div><div class="metric"><small>Tue</small><b>Run</b></div><div class="metric"><small>Wed</small><b>Mobility</b></div><div class="metric"><small>Thu</small><b>Lift</b></div><div class="metric"><small>Fri</small><b>Recover</b></div><div class="metric"><small>Sat</small><b>Long run</b></div><div class="metric"><small>Sun</small><b>Today</b></div>
-        </div>
+        <div class="split-2" style="margin-top:12px" id="calendarWeek"></div>
       </div>
-      <div class="card"><h3>Today plan</h3><p class="small" style="margin-top:8px" id="calendarPlan">Easy session, protein focus after training, hydration catch-up, sleep early.</p></div>
-      <div class="card"><h3>Weekly signals</h3><p class="small" style="margin-top:8px" id="calendarSignals">Habit: 5/7 done · Nutrition: solid on training days · Rest: one full recovery day planned.</p></div>
+      <div class="card"><div class="section-label">Today plan</div><p class="small" style="margin-top:8px" id="calendarPlan">Easy session, protein focus after training, hydration catch-up, sleep early.</p></div>
+      <div class="card"><div class="section-label">Weekly signals</div><p class="small" style="margin-top:8px" id="calendarSignals">Load and recovery markers make the week feel more like a training map than an admin calendar.</p></div>
     </section>
 
-    <section class="screen" data-screen="training">
-      <div class="card">
-        <div class="split"><h2>Training</h2><span class="kbd">Today</span></div>
-        <div class="tabs"><button class="tab active">Today</button><button class="tab">Workouts</button></div>
-        <div class="choice active"><b id="trainingTitle">Recommended workout</b><div class="small" id="trainingSummary">Upper body + zone 2 finish · 45 min · Moderate</div></div>
-        <div class="choice" style="margin-top:10px"><b>Why this?</b><div class="small" id="trainingWhy">Sleep was good, HRV stable, but yesterday's load was still meaningful.</div></div>
-      </div>
-      <div class="card"><h3 id="trainingSignalsTitle">Garmin signals</h3><p class="small" style="margin-top:8px" id="trainingSignalsText">Last workout: intervals 2 days ago · Training load: moderate · Recovery: stable · Sleep: 7h 22m.</p></div>
-      <div class="card"><h3>Workout history</h3><p class="small" style="margin-top:8px" id="trainingHistory">Last 7 days: 3 workouts completed, 1 mobility session, 1 long run, 2 recovery days.</p></div>
-    </section>
-
-    <section class="screen" data-screen="nutrition">
-      <div class="card">
-        <div class="split"><h2>Nutrition</h2><span class="kbd">Targets</span></div>
-        <div class="row" style="margin-top:12px">
-          <div class="metric"><small>Calories</small><b id="caloriesMetric">2,600</b></div><div class="metric"><small>Protein</small><b id="proteinMetric">140g</b></div><div class="metric"><small>Carbs</small><b id="carbsMetric">300g</b></div><div class="metric"><small>Fat</small><b id="fatMetric">80g</b></div><div class="metric"><small>Water</small><b id="waterMetric">3.2L</b></div><div class="metric"><small>Status</small><b id="nutritionStatus">Fuel up</b></div>
-        </div>
-      </div>
-      <div class="card"><h3>Quick add</h3><div class="row" style="margin-top:10px"><button class="btn small">Meal</button><button class="btn small secondary">Snack</button><button class="btn small secondary">Water</button><button class="btn small secondary">Saved meal</button></div></div>
-      <div class="card"><h3>Insight</h3><p class="small" style="margin-top:8px" id="nutritionInsight">Protein is slightly low for a training day. Eat a high-protein meal before the evening session.</p></div>
-    </section>
-
-    <section class="screen" data-screen="habits">
-      <div class="card">
-        <div class="split"><h2>Habits</h2><span class="kbd">3 habits</span></div>
-        <div class="stack" style="margin-top:12px">
-          <div class="choice"><b id="habitOne">Protein after waking</b><div class="small" id="habitOneCopy">Cue: coffee routine · Smallest version: 25g shake.</div></div>
-          <div class="choice"><b id="habitTwo">8k steps</b><div class="small" id="habitTwoCopy">Cue: lunch walk · Status: partial</div></div>
-          <div class="choice"><b id="habitThree">Sleep before 11</b><div class="small" id="habitThreeCopy">Cue: after dinner · Status: done</div></div>
-        </div>
-      </div>
-      <div class="card"><h3>Consistency</h3><p class="small" style="margin-top:8px" id="habitConsistency">You hit habits 5 of the last 7 days. Keep the streak pressure low; aim for steady repeatability.</p></div>
+    <section class="screen" data-screen="log">
+      <div class="card"><div class="split"><h2>Log</h2><span class="kbd">History</span></div><div class="stack" style="margin-top:12px" id="logBlocks"></div></div>
     </section>
 
     <section class="screen" data-screen="profile">
-      <div class="card">
-        <div class="split"><h2>Profile</h2><span class="kbd">Settings</span></div>
-        <div class="stack" style="margin-top:12px">
-          <div class="choice"><b>Source</b><div class="small" id="profileSource">Garmin · Connected · Sleep, HRV, activity sync on.</div></div>
-          <div class="choice"><b>Theme</b><div class="small" id="profileTheme">Dark · Light / Dark / System</div></div>
-          <div class="choice"><b>Mode</b><div class="small" id="profileMode">Performance · Goals · Notifications</div></div>
-          <div class="choice"><b>Goals</b><div class="small" id="profileGoals">Improve endurance, improve protein, recover better.</div></div>
-          <div class="choice"><b>Future connections</b><div class="small">Apple Health, Strava, WHOOP, Wahoo</div></div>
-        </div>
-      </div>
+      <div class="card"><div class="split"><h2>Profile</h2><span class="kbd">Settings</span></div><div class="stack" style="margin-top:12px"><div class="choice"><b>Source</b><div class="small" id="profileSource">Garmin · Connected · Sleep, HRV, activity sync on.</div></div><div class="choice"><b>Experience level</b><div class="small" id="profileLevel">Beginner · Cleanest language and fewer metrics.</div></div><div class="choice"><b>Mode</b><div class="small" id="profileMode">Simple · Goals · Notifications</div></div><div class="choice"><b>Goals</b><div class="small" id="profileGoals">Train smarter, recover better.</div></div><div class="choice"><b>Theme</b><div class="small" id="profileTheme">Dark only in the prototype. Theme selection lives here, not onboarding.</div></div></div></div>
     </section>
+
     <div class="modal-backdrop" id="paywallBackdrop" aria-hidden="true">
       <div class="modal">
-        <div class="modal-header"><h3>Preview premium</h3><button class="ghost" id="closePaywall">Dismiss</button></div>
-        <p class="small">Free covers the core daily loop. Premium adds richer integrations, weekly review depth, and less logging friction. Coach later is a future tier for adaptive programmes.</p>
+        <div class="modal-header"><h3>Premium preview</h3><button class="ghost" id="closePaywall">Dismiss</button></div>
+        <p class="small">Free keeps the core daily loop. Premium adds deeper wearable explanations, adaptive targets, and less logging friction. Coach Later is coming later.</p>
         <div class="stack" style="margin-top:12px">
-          <div class="choice"><b>Free</b><div class="small">Today dashboard, basic logging, habits, manual fallback.</div></div>
-          <div class="choice"><b>Premium</b><div class="small">Wearable integrations, richer weekly review, saved meal automation.</div></div>
-          <div class="choice"><b>Coach later</b><div class="small">Adaptive programmes and specialist guidance. Not in MVP.</div></div>
+          <div class="choice"><div class="split"><b>Free</b><span class="badge">GBP0 / $0</span></div><div class="small">Core Today, basic logging, manual fallback, weekly review.</div></div>
+          <div class="choice active"><div class="split"><b>Premium Monthly</b><span class="badge blue">GBP9.99 / $12.99</span></div><div class="small">Deeper insight and fewer limits.</div></div>
+          <div class="choice active"><div class="split"><b>Premium Annual</b><span class="badge good">GBP69.99 / $89.99 · Best value</span></div><div class="small">Best value for richer guidance.</div></div>
+          <div class="choice"><div class="split"><b>Coach Later</b><span class="badge amber">From GBP29.99 / $39.99</span></div><div class="small">Coming later.</div></div>
         </div>
         <div style="height:12px"></div>
         <button class="btn" id="continueFree">Continue free</button>
@@ -206,10 +170,10 @@
 
   <nav class="nav" aria-label="Primary navigation">
     <button data-nav="today" class="active">Today</button>
-    <button data-nav="calendar">Calendar</button>
     <button data-nav="training">Training</button>
     <button data-nav="nutrition">Nutrition</button>
-    <button data-nav="habits">Habits</button>
+    <button data-nav="calendar">Calendar</button>
+    <button data-nav="log">Log</button>
   </nav>
 
   <script>
@@ -217,115 +181,112 @@
     const screens = [...document.querySelectorAll('.screen')];
     const nav = document.querySelector('.nav');
     const navButtons = [...document.querySelectorAll('.nav button')];
-    const themeToggle = document.getElementById('themeToggle');
-    const themeKey = 'lifeapp-theme';
-    const state = { source: 'garmin', mode: 'simple', theme: 'dark', goals: ['Improve endurance', 'Improve protein', 'Recover better'] };
+    const themeKey = 'lifeapp-theme-v2';
+    const state = {
+      source: 'garmin',
+      mode: 'simple',
+      theme: 'dark',
+      goals: ['Train smarter', 'Recover better'],
+      frequency: '3-5 days/week',
+      trainingType: 'strength',
+      level: 'Beginner',
+      tracking: 'Quick targets',
+      focus: 'Protein'
+    };
     const sourceCopy = {
-      garmin: { label: 'Garmin · Connected · Sleep, HRV, activity sync on.', meta: 'Garmin synced 8 min ago', signals: 'Sleep 7h 22m · HRV steady · Load moderate', training: 'Garmin signals', trainingText: 'Last workout: intervals 2 days ago · Training load: moderate · Recovery: stable · Sleep: 7h 22m.', calendar: 'Habit: 5/7 done · Nutrition: solid on training days · Rest: one full recovery day planned.', insight: 'Protein is slightly low for a training day. Eat a high-protein meal before the evening session.' },
-      other: { label: 'Other wearable/app · Coming next · Use manual or demo data today.', meta: 'Demo wearable data', signals: 'Sleep 7h 10m · Recovery steady · Load moderate', training: 'Normalized wearable signals', trainingText: 'Last workout: 2 days ago · Training load: moderate · Recovery: stable · Sleep: 7h 10m.', calendar: 'Habit: 4/7 done · Nutrition: steady · Rest: one recovery day planned.', insight: 'Your wearable path is coming next. For now, use the same daily plan and manual check-ins.' },
-      manual: { label: 'Manual · 3-touch check-in active.', meta: 'Manual entry today', signals: 'Sleep 7h · Energy okay · Load estimated', training: 'Manual signals', trainingText: 'Last workout: entered manually · Training load: estimated · Recovery: self-reported · Sleep: 7h.', calendar: 'Habit: 3/7 done · Nutrition: manual log · Rest: one flexible recovery block planned.', insight: 'No connection yet, so Life App is using your manual check-ins to guide the day.' }
+      garmin: { label: 'Garmin · synced', state: 'Synced', pill: 'Ready to train', score: 74, meta: 'Garmin synced 8 min ago', signals: 'Sleep 7h 22m · HRV steady · Load moderate', trainingTitle: 'Garmin signals', trainingText: 'Last workout: intervals 2 days ago · Training load: moderate · Recovery: stable · Sleep: 7h 22m.', calendar: 'Readiness and load markers make the week feel like a training map, not an admin calendar.', insight: 'Recovery is decent, but the previous load was still meaningful. Keep training smooth and eat like it matters.', nutrition: 'Protein is slightly low for a training day. Eat a high-protein meal before the evening session.', profile: 'Garmin · Connected · Sleep, HRV, activity sync on.' },
+      other: { label: 'Other wearable-app · simulated', state: 'Simulated', pill: 'Ready with demo signals', score: 71, meta: 'Simulated wearable data', signals: 'Sleep 7h 10m · Recovery steady · Load moderate', trainingTitle: 'Normalized wearable signals', trainingText: 'Last workout: 2 days ago · Training load: moderate · Recovery: stable · Sleep: 7h 10m.', calendar: 'Simulated wearables still create a useful training map and keep the week readable.', insight: 'Your wearable path is coming next. For now, use the same daily plan and manual check-ins.', nutrition: 'Fuel is on track, but the next workout still wants a carb top-up.', profile: 'Other wearable-app · Simulated · Using fallback guidance.' },
+      manual: { label: 'Manual · manual', state: 'Manual', pill: 'Guide from check-ins', score: 66, meta: 'Manual entry today', signals: 'Sleep 7h · Energy okay · Load estimated', trainingTitle: 'Manual signals', trainingText: 'Last workout: entered manually · Training load: estimated · Recovery: self-reported · Sleep: 7h.', calendar: 'Manual check-ins still create an understandable training week with recovery days and log markers.', insight: 'No connection yet, so Life App is using your manual check-ins to guide the day.', nutrition: 'Fuel steadily and keep hydration visible through the day.', profile: 'Manual · Check-ins active.' }
     };
-    const onboardingScreens = new Set(['onboarding', 'goals', 'training-context', 'nutrition-hydration', 'habits-setup', 'data-source', 'plan-preview']);
-    const show = (name) => {
-      screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name));
-      navButtons.forEach(b => b.classList.toggle('active', b.dataset.nav === name));
-      nav.classList.toggle('hidden', onboardingScreens.has(name));
+    const levelCopy = {
+      Beginner: { density: 'Beginner · Cleanest language and fewer metrics.', today: 'Beginners see larger cards, one training recommendation, core nutrition targets, hydration, and one recovery prompt.', metrics: ['Sleep', 'Recovery', 'Load', 'Fuel'], advanced: false },
+      Intermediate: { density: 'Intermediate · Balanced signals and actions.', today: 'Intermediate users get a fuller signal mix with clear action guidance.', metrics: ['Sleep', 'Recovery', 'Load', 'Fuel', 'HRV', 'Protein'], advanced: false },
+      Advanced: { density: 'Advanced · Dense metrics and driver breakdowns.', today: 'Advanced users see the data nerd view, but guidance still ends in training decisions.', metrics: ['HRV', 'RHR', 'Sleep debt', 'Load', 'Steps', 'Calories', 'Protein', 'Carbs'], advanced: true }
     };
-    const makeExclusive = (item, selector) => {
-      item.parentElement.querySelectorAll(selector).forEach(el => el.classList.remove('active'));
-      item.classList.add('active');
-    };
-    const syncThemeChoice = () => {
-      document.querySelectorAll('[data-theme-option]').forEach(el => el.classList.toggle('active', el.dataset.themeOption === state.theme));
-    };
-    const applyState = () => {
+    const onboardingScreens = new Set(['welcome','goals','training-baseline','experience-level','nutrition-baseline','connect-data','plan-preview','save-plan','premium-preview']);
+    const show = (name) => { screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name)); navButtons.forEach(b => b.classList.toggle('active', b.dataset.nav === name)); nav.classList.toggle('hidden', onboardingScreens.has(name)); };
+    const makeExclusive = (item, selector) => { item.parentElement.querySelectorAll(selector).forEach(el => el.classList.remove('active')); item.classList.add('active'); };
+    const updateToday = () => {
       const c = sourceCopy[state.source];
-      document.getElementById('todayMeta').textContent = `Sun 7 Jun · ${c.meta}`;
+      const l = levelCopy[state.level];
+      document.getElementById('previewPill').textContent = c.pill;
+      document.getElementById('previewHeadline').textContent = state.level === 'Advanced' ? 'Today gets dense, but still useful' : state.level === 'Beginner' ? 'Train easy today' : 'Keep the day balanced';
+      document.getElementById('previewCopy').textContent = c.insight;
+      document.getElementById('previewSource').textContent = `${c.label}`;
+      document.getElementById('previewAdvanced').textContent = l.today;
+      document.getElementById('todayScore').textContent = c.score;
+      document.getElementById('todayStatePill').textContent = c.pill;
+      document.getElementById('todayMeta').textContent = `${c.meta} · ${state.level}`;
       document.getElementById('todaySignals').textContent = c.signals;
-      document.getElementById('trainingSignalsTitle').textContent = c.training;
+      document.getElementById('todayDataStates').innerHTML = `<span class="data-chip">${c.state}</span><span class="data-chip">Readiness ${c.score}</span><span class="data-chip">${state.level}</span><span class="data-chip">${state.tracking}</span>`;
+      document.getElementById('trainingAction').textContent = state.level === 'Advanced' ? 'Push with guardrails' : state.level === 'Beginner' ? 'Train easy' : 'Train normally';
+      document.getElementById('trainingReason').textContent = state.level === 'Advanced' ? 'Load is manageable, but the drivers still suggest keeping some reserve for tomorrow.' : state.level === 'Beginner' ? '35-45 min zone 2 or mobility. Keep intensity moderate.' : 'Hold a steady session and adjust if warm-up feels flat.';
+      document.getElementById('nutritionAction').textContent = 'Nutrition';
+      document.getElementById('nutritionReason').textContent = state.level === 'Advanced' ? 'Protein, carbs, and water all matter today because load is still live.' : 'Hit 140g protein and keep carbs steady around training.';
+      document.getElementById('hydrationAction').textContent = 'Hydration';
+      document.getElementById('hydrationReason').textContent = state.source === 'manual' ? 'Aim for 2.5L total and use each check-in as a water reminder.' : 'Aim for 3.2L total and add 500ml before training.';
+      document.getElementById('recoveryAction').textContent = 'Recovery';
+      document.getElementById('recoveryReason').textContent = state.level === 'Advanced' ? 'Watch sleep debt and resting HR tonight; they should tell you if tomorrow needs a downshift.' : 'Wind down 30 min earlier tonight and keep tomorrow open if load climbs.';
+      document.getElementById('todayInsight').textContent = c.insight;
+      document.getElementById('trainingTitle').textContent = state.level === 'Beginner' ? 'Easy session' : state.level === 'Advanced' ? 'Workout with progression signal' : 'Recommended workout';
+      document.getElementById('trainingSummary').textContent = state.level === 'Advanced' ? 'Upper body + zone 2 finish · 45 min · controlled' : state.level === 'Beginner' ? 'Easy session · 35-45 min · moderate effort' : 'Balanced session · 45 min · moderate effort';
+      document.getElementById('trainingWhy').textContent = state.level === 'Advanced' ? 'The drivers look fine, but the next step is to keep the week trending without spiking fatigue.' : state.level === 'Beginner' ? 'Keep it manageable and consistent while the body settles in.' : 'Sleep was good, HRV steady, but yesterday’s load was still meaningful.';
+      document.getElementById('trainingSignalsTitle').textContent = c.trainingTitle;
       document.getElementById('trainingSignalsText').textContent = c.trainingText;
+      document.getElementById('trainingHistory').textContent = state.level === 'Advanced' ? 'Last 7 days: 4 workouts completed, 1 mobility session, 1 long run, 1 recovery day, 1 manual note.' : 'Last 7 days: 3 workouts completed, 1 mobility session, 1 long run, 2 recovery days.';
+      document.getElementById('nutritionInsight').textContent = c.nutrition;
       document.getElementById('calendarSignals').textContent = c.calendar;
-      document.getElementById('nutritionInsight').textContent = c.insight;
-      document.getElementById('profileSource').textContent = c.label;
-      document.getElementById('profileTheme').textContent = `${state.theme === 'dark' ? 'Dark' : 'Light'} · Light / Dark / System`;
+      document.getElementById('calendarPlan').textContent = state.level === 'Advanced' ? 'Easy session, protein and carbs matched to training, hydration top-up, log weight and lift markers after dinner.' : 'Easy session, protein focus after training, hydration catch-up, sleep early.';
+      document.getElementById('profileSource').textContent = c.profile;
+      document.getElementById('profileLevel').textContent = l.density;
       document.getElementById('profileMode').textContent = `${state.mode === 'simple' ? 'Simple' : 'Performance'} · Goals · Notifications`;
       document.getElementById('profileGoals').textContent = state.goals.join(', ').toLowerCase();
-      document.getElementById('trainingSummary').textContent = state.mode === 'simple' ? 'Easy session · 35-45 min · moderate effort' : 'Upper body + zone 2 finish · 45 min · Moderate';
-      document.getElementById('trainingWhy').textContent = state.mode === 'simple' ? 'Keep it manageable and consistent while the body settles in.' : "Sleep was good, HRV steady, but yesterday's load was still meaningful.";
-      document.getElementById('habitConsistency').textContent = state.mode === 'simple' ? 'You hit habits 4 of the last 7 days. Keep the streak pressure low; aim for steady repeatability.' : 'You hit habits 5 of the last 7 days. Keep the streak pressure low; aim for steady repeatability.';
-      document.getElementById('sleepMetric').textContent = state.source === 'manual' ? 'Okay' : 'Good';
-      document.getElementById('recoveryMetric').textContent = state.source === 'other' ? 'Steady' : 'Stable';
-      document.getElementById('loadMetric').textContent = state.source === 'manual' ? 'Estimated' : 'Moderate';
-      document.getElementById('hydrationMetric').textContent = state.source === 'other' ? 'Okay' : 'Behind';
-      document.getElementById('todayStatePill').textContent = state.source === 'manual' ? 'Recover' : 'Ready to train';
-      document.getElementById('trainingAction').textContent = state.source === 'manual' ? 'Recover' : 'Train easy';
-      document.getElementById('trainingReason').textContent = state.source === 'manual' ? 'Keep today light, use the 3-touch check-in, and only increase load when energy is clear.' : '35–45 min zone 2 or mobility. Keep intensity moderate.';
-      document.getElementById('proteinAction').textContent = state.mode === 'simple' ? 'Protein target' : 'Protein target';
-      document.getElementById('proteinReason').textContent = state.mode === 'simple' ? 'Easy win: hit your protein target with one repeat meal.' : '140g today. Front-load breakfast.';
-      document.getElementById('waterAction').textContent = 'Water target';
-      document.getElementById('waterReason').textContent = state.source === 'manual' ? '2.5L total. Add a glass with each check-in.' : '3.2L total. Add 500ml before training.';
-      document.getElementById('sleepAction').textContent = 'Sleep action';
-      document.getElementById('sleepReason').textContent = state.mode === 'simple' ? 'Wind down 30 min earlier tonight.' : 'Wind down 30 min earlier tonight.';
-      document.getElementById('nutritionStatus').textContent = state.source === 'manual' ? 'Fuel steadily' : 'Fuel up';
-      document.getElementById('caloriesMetric').textContent = state.source === 'manual' ? '2,300' : '2,600';
-      document.getElementById('proteinMetric').textContent = state.mode === 'simple' ? '130g' : '140g';
-      document.getElementById('carbsMetric').textContent = state.source === 'manual' ? '260g' : '300g';
-      document.getElementById('fatMetric').textContent = '80g';
-      document.getElementById('waterMetric').textContent = state.source === 'manual' ? '2.5L' : '3.2L';
+      document.getElementById('profileTheme').textContent = 'Dark only in the prototype. Theme selection lives here, not onboarding.';
+      document.getElementById('loadProxy').textContent = state.level === 'Advanced' ? '0.92' : '0.86';
+      document.getElementById('volumeTrend').textContent = state.level === 'Advanced' ? 'Building' : 'Steady';
+      document.getElementById('fatigueNotes').textContent = state.source === 'manual' ? 'Self-reported' : 'Low';
+      document.getElementById('todayMetrics').innerHTML = '';
+      const metrics = state.level === 'Advanced' ? [
+        ['HRV', '62 ms', 'blue'], ['RHR', '48 bpm', 'amber'], ['Sleep', '7h 22m', 'good'], ['Load', 'Moderate', 'blue'], ['Acute/chronic', '0.92', 'amber'], ['Steps', '9,480', 'cyan'], ['Calories', '2,320', 'amber'], ['Protein', '128g', 'good'], ['Carbs', '242g', 'blue'], ['Water', '2.9L', 'cyan'], ['Weight trend', '-0.3 kg', 'amber'], ['Last lift', 'Upper 2d ago', 'blue']
+      ] : state.level === 'Intermediate' ? [
+        ['Sleep', 'Good', 'good'], ['Recovery', 'Stable', 'good'], ['Load', 'Moderate', 'blue'], ['Fuel', 'Behind', 'amber'], ['HRV', 'Steady', 'cyan'], ['Protein', '128g', 'amber']
+      ] : [
+        ['Sleep', 'Good', 'good'], ['Recovery', 'Stable', 'good'], ['Load', 'Moderate', 'blue'], ['Fuel', 'Behind', 'amber']
+      ];
+      document.getElementById('todayMetrics').innerHTML = metrics.map(([label,val,tone]) => `<div class="metric"><small>${label}</small><b>${val}</b></div>`).join('');
+      const nutritionMetrics = state.level === 'Advanced' ? [['Calories','2,320', 'amber'], ['Protein','128g','good'], ['Carbs','242g','blue'], ['Fat','76g','amber'], ['Water','2.9L','cyan'], ['Focus','Fuel training','blue']] : [['Calories','2,320','amber'], ['Protein','128g','good'], ['Carbs','242g','blue'], ['Fat','76g','amber'], ['Water','2.9L','cyan']];
+      document.getElementById('nutritionMetrics').innerHTML = nutritionMetrics.map(([label,val]) => `<div class="metric"><small>${label}</small><b>${val}</b></div>`).join('');
+      document.getElementById('trainingAdvancedCard').style.display = l.advanced ? 'block' : 'none';
+      document.getElementById('calendarWeek').innerHTML = [
+        ['Mon','Lift','blue'],['Tue','Run','blue'],['Wed','Recover','amber'],['Thu','Lift','blue'],['Fri','Fuel','cyan'],['Sat','Long','blue'],['Sun','Log','good']
+      ].map(([d,t,tone]) => `<div class="choice"><div class="split"><b>${d}</b><span class="badge ${tone==='blue'?'blue':tone==='amber'?'amber':tone==='cyan'?'cyan':'good'}">${tone==='amber'?'Recovery':tone==='cyan'?'Nutrition focus':tone==='good'?'Log marker':t}</span></div><div class="small" style="margin-top:8px">${t}${d==='Sun' ? ' · today' : ''}</div></div>`).join('');
+      document.getElementById('logBlocks').innerHTML = [
+        ['Body weight progression','82.1 → 81.8 → 81.6 kg','Weekly trend'],
+        ['Lifting progress','Bench +2.5kg, squat volume steady','Strength'],
+        ['Garmin health stats history','HRV 58 → 62 ms, sleep up 22 min','Wearable'],
+        ['Manual daily check-ins','Energy good, soreness low, stress moderate','Manual'],
+        ['Nutrition history','Protein 5 of 7 days on target, water improving','Fuel']
+      ].map(([a,b,c]) => `<div class="choice"><b>${a}</b><div class="small">${b}</div><div class="data-chip" style="margin-top:8px">${c}</div></div>`).join('');
     };
     document.addEventListener('click', (e) => {
-      const source = e.target.closest('[data-source]');
-      const mode = e.target.closest('[data-mode]');
-      const themeOption = e.target.closest('[data-theme-option]');
-      const goal = e.target.closest('[data-goal]');
-      const setupChoice = e.target.closest('.screen .choice:not([data-goal]):not([data-mode]):not([data-theme-option])');
-      const go = e.target.closest('[data-go]');
-      const navItem = e.target.closest('[data-nav]');
-
-      if (source) {
-        state.source = source.dataset.source;
-        makeExclusive(source, '[data-source]');
-        applyState();
-        return;
-      }
-      if (mode) {
-        state.mode = mode.dataset.mode;
-        makeExclusive(mode, '[data-mode]');
-        applyState();
-        return;
-      }
-      if (themeOption) {
-        const next = themeOption.dataset.themeOption;
-        state.theme = next;
-        root.setAttribute('data-theme', next);
-        localStorage.setItem(themeKey, next);
-        themeToggle.textContent = next === 'dark' ? 'Dark' : 'Light';
-        makeExclusive(themeOption, '[data-theme-option]');
-        applyState();
-        return;
-      }
-      if (goal) {
-        goal.classList.toggle('active');
-        const selectedGoals = [...document.querySelectorAll('[data-goal].active')].map(el => el.dataset.goal);
-        state.goals = selectedGoals.length ? selectedGoals : ['Build fitness'];
-        applyState();
-        return;
-      }
-      if (setupChoice && !e.target.closest('[data-go]')) {
-        makeExclusive(setupChoice, '.choice');
-        return;
-      }
+      const source = e.target.closest('[data-source]'); const mode = e.target.closest('[data-mode]'); const goal = e.target.closest('[data-goal]'); const level = e.target.closest('[data-level]'); const tracking = e.target.closest('[data-tracking]'); const focus = e.target.closest('[data-focus]'); const go = e.target.closest('[data-go]'); const navItem = e.target.closest('[data-nav]'); const choice = e.target.closest('.choice, .option');
+      if (source) { state.source = source.dataset.source; makeExclusive(source, '[data-source]'); updateToday(); return; }
+      if (mode) { state.mode = mode.dataset.mode; updateToday(); return; }
+      if (goal) { goal.classList.toggle('active'); state.goals = [...document.querySelectorAll('[data-goal].active')].map(el => el.dataset.goal) || ['Train smarter']; updateToday(); return; }
+      if (level) { state.level = level.dataset.level; makeExclusive(level, '[data-level]'); updateToday(); return; }
+      if (tracking) { state.tracking = tracking.dataset.tracking; makeExclusive(tracking, '[data-tracking]'); updateToday(); return; }
+      if (focus) { state.focus = focus.dataset.focus; makeExclusive(focus, '[data-focus]'); updateToday(); return; }
       if (go) {
-        if (go.dataset.go === 'today' && !document.querySelector('.modal-backdrop.show')) document.getElementById('paywallBackdrop').classList.add('show');
-        else show(go.dataset.go);
+        if (go.dataset.go === 'today') document.getElementById('paywallBackdrop').classList.add('show'); else show(go.dataset.go);
       }
       if (navItem) show(navItem.dataset.nav);
+      if (choice && choice.dataset.source === undefined && choice.dataset.level === undefined && choice.dataset.tracking === undefined && choice.dataset.focus === undefined && !choice.closest('.modal')) { choice.classList.toggle('active'); }
     });
-    const saved = localStorage.getItem(themeKey) || 'dark'; root.setAttribute('data-theme', saved); state.theme = saved; themeToggle.textContent = saved === 'dark' ? 'Dark' : 'Light'; syncThemeChoice(); themeToggle.addEventListener('click', () => { const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); localStorage.setItem(themeKey, next); state.theme = next; themeToggle.textContent = next === 'dark' ? 'Dark' : 'Light'; syncThemeChoice(); applyState(); });
+    document.getElementById('profileButton').addEventListener('click', () => show('profile'));
     document.getElementById('closePaywall').addEventListener('click', () => document.getElementById('paywallBackdrop').classList.remove('show'));
     document.getElementById('continueFree').addEventListener('click', () => { document.getElementById('paywallBackdrop').classList.remove('show'); show('today'); });
-    applyState();
-    show('onboarding');
+    updateToday();
+    show('welcome');
   </script>
 </body>
 </html>
