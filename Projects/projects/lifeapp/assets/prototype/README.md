@@ -1,4 +1,4 @@
-# Life App Clickable Prototype v2.1
+# Life App Clickable Prototype v2.3
 
 Standalone, dependency-free HTML prototype for the Life App MVP.
 
@@ -7,9 +7,9 @@ Standalone, dependency-free HTML prototype for the Life App MVP.
 - Open `index.html` directly in a browser.
 - Or serve this folder with any static server if preferred.
 
-## V2.1 flow
+## V2.3 flow
 
-The prototype now uses a longer micro-screen onboarding flow built from the original 9 core sections. The UI expands that formula into 18 onboarding screens before the main app so the experience can feel more like a polished health / finance-style onboarding journey without turning into a boring form.
+The prototype keeps the longer 18-screen micro-onboarding flow from the earlier v2 prototype family, but sharpens the copy and state handling so the experience feels closer to a coherent premium health product.
 
 Core section order preserved:
 
@@ -23,7 +23,7 @@ Core section order preserved:
 8. Account setup / save plan
 9. Premium preview
 
-Micro-screen breakdown in v2.1:
+Micro-screen breakdown in v2.3:
 
 1. Welcome
 2. Primary goal
@@ -36,15 +36,15 @@ Micro-screen breakdown in v2.1:
 9. Nutrition focus
 10. Hydration / fuel confidence
 11. Data source choice
-12. Garmin trust copy
+12. Connection trust
 13. Consent / data state explanation
-14. Plan generation / loading
+14. Plan generation
 15. Plan preview summary
 16. Save your plan
 17. Account options
 18. Premium preview
 
-The prototype keeps account setup near the end and keeps the paywall dismissible with Continue free, which lands in the main app Today screen.
+The onboarding keeps account setup near the end and frames it as save/sync. The paywall remains dismissible with Continue free, which lands in the main app Today screen.
 
 ## Main app
 
@@ -56,27 +56,29 @@ After onboarding, the main app uses the v2 bottom navigation:
 - Calendar
 - Log
 
-There is no visible Profile button in this prototype pass. Theme selection is not shown in onboarding or on the main dashboard.
+A Profile / Settings button now appears in the top-right once you are inside the main app. Theme controls live there, not in onboarding.
 
-## What changed in v2.1
+## What changed in v2.3
 
-- Onboarding expands from 9 sections into a longer 18-screen micro-flow before the main app.
-- The old 9 sections are still the backbone of the flow, but each major section now has a smaller, more intentional decision screen.
-- Habits remains removed from the prototype.
-- Log stays as the fifth bottom-nav tab.
-- Beginner / Intermediate / Advanced still changes dashboard density and copy.
-- Today remains the strongest screen and now updates from onboarding choices for goals, training rhythm, training type, experience level, nutrition posture, hydration confidence, and data source.
-- Nutrition uses training-day targets, quick add, recent meals, and an insight block.
-- Calendar uses a week view with readiness/load markers, session types, recovery, nutrition focus, and log markers.
-- Log includes body weight progression, lifting progress, Garmin health history, manual check-ins, and nutrition history.
-- The paywall is dismissible and appears after the plan/account save moment.
+- README version updated to v2.3.
+- Onboarding copy now follows the sharper 18-screen brief more closely.
+- Progress labels and trust states are clearer, including synced, syncing, simulated, manual, and missing.
+- Plan generation shows the selected inputs instead of looking like a fake loading spinner.
+- Account setup is framed as saving and syncing, not payment-first.
+- The premium preview is dismissible, priced, and keeps Continue free visible.
+- Today now changes density and copy more clearly across Beginner, Intermediate, and Advanced.
+- Nutrition is richer, with quick add, recent/saved meals, hydration, and deeper insight copy.
+- Calendar is a more performance-led week view with push/recover/fuel/log markers.
+- Log includes body weight, lifting progress, wearable history, manual check-ins, and nutrition history.
+- Profile / Settings now holds theme, experience level, source, subscription, and privacy/data controls.
+- The prototype remains dark-first and dependency-free.
 
 ## State and interactions
 
 - Onboarding selections update the prototype state.
-- State affects Today, Training, Nutrition, Calendar, and Log copy.
-- Data state labels include synced, simulated, manual, and missing-style wording where relevant.
-- The main prototype defaults to the dark-first v2 palette.
+- State affects Today, Training, Nutrition, Calendar, Log, and Profile copy.
+- Data state labels are used wherever trust matters.
+- Beginner / Intermediate / Advanced meaningfully changes Today density and guidance depth.
 
 ## Paywall preview
 
@@ -90,18 +92,16 @@ There is no visible Profile button in this prototype pass. Theme selection is no
 
 ## Testing notes
 
-- The embedded JavaScript is kept dependency-free and should compile in a plain browser.
+- The embedded JavaScript is dependency-free and should compile in a plain browser.
 - Verify onboarding button flow, option selection, and navigation switching after changes.
 - Confirm the onboarding screens can be progressed through all the way to Today.
 - Confirm Continue free works and closes the paywall.
-- Check that no string-literal or apostrophe syntax issue has been introduced.
-- Confirm the chosen experience level changes dashboard density and Today copy.
-- Confirm no Profile button appears in onboarding or the main dashboard.
+- Confirm Beginner / Intermediate / Advanced changes Today density or copy.
 - Open in a browser and step through the flow once before shipping.
 
 ## Notes
 
 - Mobile-first layout
-- Dark-first colour system from the v2 brief
+- Dark-first colour system from the v2.3 brief
 - Prototype remains static and dependency-free
 - No external assets or libraries are required
